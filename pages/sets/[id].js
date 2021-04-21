@@ -15,7 +15,7 @@ const SetPage = () => {
 	return (
 		<Fragment>
 			<Head>
-				<title>Flashcards</title>
+				<title>Plearncard</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 

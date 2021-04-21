@@ -9,7 +9,7 @@ const NavBar = () => {
 		<nav className="flex justify-between items-center h-14 p-6 bg-green-500 text-white">
 			<div className="flex items-center">
 				<h1 className="text-2xl font-bold cursor-pointer">
-					<Link href="/">Flashcards</Link>
+					<Link href="/">Plearncard</Link>
 				</h1>
 				{session && (
 					<ul className="flex">

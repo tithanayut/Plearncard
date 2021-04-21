@@ -32,13 +32,13 @@ const LoginPage = () => {
 	return (
 		<Fragment>
 			<Head>
-				<title>Flashcards</title>
+				<title>Plearncard</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div className="w-2/3 mt-8 mx-auto">
 				<div className="flex justify-center">
 					<h1 className="text-2xl text-green-600 font-bold">
-						Login with Plerncard Account
+						Login with Plearncard Account
 					</h1>
 				</div>
 				<div className="flex justify-center mt-8">

@@ -25,7 +25,7 @@ const RegisterPage = () => {
 	return (
 		<Fragment>
 			<Head>
-				<title>Flashcards</title>
+				<title>Plearncard</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div className="w-2/3 mt-8 mx-auto">

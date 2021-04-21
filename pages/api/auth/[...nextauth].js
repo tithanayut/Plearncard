@@ -7,7 +7,7 @@ export default NextAuth({
 	},
 	providers: [
 		Providers.Credentials({
-			name: "Plerncard Account",
+			name: "Plearncard Account",
 			async authorize(credentials) {
 				// TODO
 				return { username: "dev" };

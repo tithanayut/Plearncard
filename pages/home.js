@@ -17,7 +17,7 @@ const HomePage = () => {
 	return (
 		<Fragment>
 			<Head>
-				<title>Flashcards</title>
+				<title>Plearncard</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
@@ -25,7 +25,7 @@ const HomePage = () => {
 				<div className="flex justify-between items-center">
 					<div>
 						<h1 className="text-2xl text-green-600 font-bold">
-							Welcome to Flashcards!
+							Welcome to Plearncard!
 						</h1>
 						<p class="text-gray-600 mt-2">
 							Below is your recent sets. Or click create to build
