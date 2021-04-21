@@ -1,9 +1,18 @@
 import { Fragment } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/client";
 
 import Sets from "../components/Sets/Sets";
 
 const SearchPage = () => {
+	const router = useRouter();
+	const [session, loading] = useSession();
+	if (loading) return null;
+	if (!loading && !session) {
+		router.replace("/login");
+	}
+
 	return (
 		<Fragment>
 			<Head>
