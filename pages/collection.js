@@ -5,7 +5,7 @@ import Link from "next/link";
 import Profile from "../components/Profile";
 import Sets from "../components/Sets/Sets";
 
-const Collection = () => {
+const CollectionPage = () => {
 	return (
 		<Fragment>
 			<Head>
@@ -43,4 +43,4 @@ const Collection = () => {
 	);
 };
 
-export default Collection;
+export default CollectionPage;

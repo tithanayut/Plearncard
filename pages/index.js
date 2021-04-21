@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
 
-const Index = () => {
+const IndexPage = () => {
 	return (
 		<Fragment>
 			<Head>
@@ -14,4 +14,4 @@ const Index = () => {
 	);
 };
 
-export default Index;
+export default IndexPage;

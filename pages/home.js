@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
 
-const Home = () => {
+const HomePage = () => {
 	return (
 		<Fragment>
 			<Head>
@@ -12,4 +12,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default HomePage;

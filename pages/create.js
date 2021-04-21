@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
 
-const Create = () => {
+const CreatePage = () => {
 	return (
 		<Fragment>
 			<Head>
@@ -48,4 +48,4 @@ const Create = () => {
 	);
 };
 
-export default Create;
+export default CreatePage;

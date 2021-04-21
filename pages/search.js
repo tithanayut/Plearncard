@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import Sets from "../components/Sets/Sets";
 
-const Search = () => {
+const SearchPage = () => {
 	return (
 		<Fragment>
 			<Head>
@@ -34,4 +34,4 @@ const Search = () => {
 	);
 };
 
-export default Search;
+export default SearchPage;
