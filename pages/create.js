@@ -1,14 +1,17 @@
 import { Fragment } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/client";
+import { useSession, getSession } from "next-auth/client";
 
 const CreatePage = () => {
 	const router = useRouter();
 	const [session, loading] = useSession();
-	if (loading) return null;
-	if (!loading && !session) {
+	if (typeof window !== "undefined" && loading) return null;
+	if (!session && typeof window !== "undefined") {
 		router.replace("/login");
+	}
+	if (!session) {
+		return <div>Acafcaefefg</div>;
 	}
 
 	return (
@@ -56,5 +59,12 @@ const CreatePage = () => {
 		</Fragment>
 	);
 };
+
+export async function getServerSideProps(context) {
+	const session = await getSession(context);
+	return {
+		props: { session },
+	};
+}
 
 export default CreatePage;
