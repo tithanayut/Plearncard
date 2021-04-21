@@ -11,7 +11,7 @@ const CreatePage = () => {
 		router.replace("/login");
 	}
 	if (!session) {
-		return <div>Acafcaefefg</div>;
+		return <div></div>;
 	}
 
 	return (
