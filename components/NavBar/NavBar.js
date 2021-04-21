@@ -6,7 +6,7 @@ const NavBar = () => {
 		<nav className="flex justify-between items-center h-14 p-6 bg-green-500 text-white">
 			<div className="flex items-center">
 				<h1 className="text-2xl font-bold cursor-pointer">
-					<Link href="/home">Flashcards</Link>
+					<Link href="/">Flashcards</Link>
 				</h1>
 				<ul className="flex">
 					<li className="ml-6 mr-3 cursor-pointer">
