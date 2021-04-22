@@ -72,7 +72,7 @@ const RegisterPage = () => {
 		}
 
 		setMessage({
-			value: "Registration success",
+			value: "Registration success - Redirecting...",
 			type: "Complete",
 			cssClass: "bg-green-100",
 		});
