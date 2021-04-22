@@ -18,7 +18,7 @@ const ProfilePage = () => {
 		<Fragment>
 			<Head>
 				<title>Plearncard</title>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/favicon.svg" />
 			</Head>
 
 			<Profile username="bankbkbkk" />

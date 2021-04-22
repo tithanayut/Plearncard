@@ -16,7 +16,7 @@ const SetPage = () => {
 		<Fragment>
 			<Head>
 				<title>Plearncard</title>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/favicon.svg" />
 			</Head>
 
 			<div className="w-2/3 mt-8 mx-auto ">
