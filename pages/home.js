@@ -27,7 +27,7 @@ const HomePage = () => {
 						<h1 className="text-2xl text-green-600 font-bold">
 							Welcome to Plearncard!
 						</h1>
-						<p class="text-gray-600 mt-2">
+						<p className="text-gray-600 mt-2">
 							Below is your recent sets. Or click create to build
 							new one.
 						</p>
