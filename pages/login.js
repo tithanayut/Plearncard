@@ -1,4 +1,4 @@
-import { useRef, Fragment } from "react";
+import { useState, useRef, Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -11,6 +11,8 @@ const LoginPage = () => {
 	if (!loading && session) {
 		router.replace("/home");
 	}
+
+	const [loginError, setloginError] = useState(null);
 
 	const usernameField = useRef();
 	const passwordField = useRef();
@@ -26,6 +28,8 @@ const LoginPage = () => {
 
 		if (!result.error) {
 			router.replace("/home");
+		} else {
+			setloginError(result.error);
 		}
 	};
 
@@ -41,7 +45,15 @@ const LoginPage = () => {
 						Login with Plearncard Account
 					</h1>
 				</div>
-				<div className="flex justify-center mt-8">
+				{loginError && (
+					<div className="flex justify-center mt-6">
+						<p className="flex justify-center items-center w-1/2 h-10 text-gray-600 bg-red-100 rounded-lg">
+							<span className="font-bold mr-2">Error:</span>
+							{loginError}
+						</p>
+					</div>
+				)}
+				<div className="flex justify-center mt-6">
 					<form
 						className="flex flex-col items-center text-gray-600"
 						onSubmit={loginHandler}
