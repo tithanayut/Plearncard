@@ -1,4 +1,4 @@
-import { useRef, Fragment } from "react";
+import { useState, useRef, Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,6 +12,12 @@ const RegisterPage = () => {
 		router.replace("/home");
 	}
 
+	const [message, setMessage] = useState({
+		value: null,
+		type: null,
+		cssClass: null,
+	});
+
 	const usernameField = useRef();
 	const passwordField = useRef();
 	const passwordConfirmationField = useRef();
@@ -19,7 +25,60 @@ const RegisterPage = () => {
 	const accountRegisHandler = async (event) => {
 		event.preventDefault();
 
-		// TODO
+		if (
+			!usernameField.current.value ||
+			!passwordField.current.value ||
+			!passwordConfirmationField.current.value
+		) {
+			setMessage({
+				value: "Please complete all fields",
+				type: "Error",
+				cssClass: "bg-red-100",
+			});
+			return;
+		}
+
+		if (
+			passwordField.current.value !==
+			passwordConfirmationField.current.value
+		) {
+			setMessage({
+				value: "Password does not match",
+				type: "Error",
+				cssClass: "bg-red-100",
+			});
+			return;
+		}
+
+		const res = await fetch("/api/users", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				username: usernameField.current.value,
+				password: passwordField.current.value,
+			}),
+		});
+		const json = await res.json();
+
+		if (json.errors) {
+			setMessage({
+				value: json.errors.join(", "),
+				type: "Error",
+				cssClass: "bg-red-100",
+			});
+			return;
+		}
+
+		setMessage({
+			value: "Registration success",
+			type: "Complete",
+			cssClass: "bg-green-100",
+		});
+		setTimeout(() => {
+			router.replace("/login");
+		}, 2000);
 	};
 
 	return (
@@ -34,7 +93,22 @@ const RegisterPage = () => {
 						Register an account
 					</h1>
 				</div>
-				<div className="flex justify-center mt-8">
+				{message.value && (
+					<div className="flex justify-center mt-6">
+						<p
+							className={[
+								"flex justify-center items-center w-1/2 h-10 text-gray-600 rounded-lg",
+								message.cssClass,
+							].join(" ")}
+						>
+							<span className="font-bold mr-2">
+								{message.type}:
+							</span>
+							{message.value}
+						</p>
+					</div>
+				)}
+				<div className="flex justify-center mt-6">
 					<form
 						className="flex flex-col items-center text-gray-600"
 						onSubmit={accountRegisHandler}
