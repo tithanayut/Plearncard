@@ -80,6 +80,7 @@ const NavBar = () => {
 						<p
 							onClick={() => {
 								signOut({
+									redirect: false,
 									callbackUrl: "/",
 								});
 							}}
