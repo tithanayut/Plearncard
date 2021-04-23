@@ -9,6 +9,9 @@ export default NextAuth({
 	session: {
 		jwt: true,
 	},
+	jwt: {
+		secret: process.env.SECRET,
+	},
 	providers: [
 		Providers.Credentials({
 			name: "Plearncard Account",

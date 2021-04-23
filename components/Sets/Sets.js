@@ -1,15 +1,19 @@
 import Set from "./Set/Set";
 
-const Sets = () => {
+const Sets = (props) => {
 	return (
 		<div className="grid grid-cols-3 mt-2">
-			<Set />
-			<Set />
-			<Set />
-			<Set />
-			<Set />
-			<Set />
-			<Set />
+			{props.sets.map((set) => {
+				return (
+					<Set
+						key={set.slug}
+						slug={set.slug}
+						name={set.name}
+						total={set.total}
+						createdAt={set.createdAt}
+					/>
+				);
+			})}
 		</div>
 	);
 };

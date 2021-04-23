@@ -37,7 +37,7 @@ const SearchPage = () => {
 				</form>
 
 				<p className="mt-8">Found 3 sets match with your search.</p>
-				<Sets />
+				{/* <Sets /> */}
 			</div>
 		</Fragment>
 	);
