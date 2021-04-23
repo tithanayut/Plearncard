@@ -20,7 +20,7 @@ const SetPage = () => {
 			</Head>
 
 			<div className="w-2/3 mt-8 mx-auto ">
-				<Link href="/collection">
+				<Link href="/cards">
 					<span className="flex items-center text-gray-600 cursor-pointer">
 						<svg
 							className="w-4 h-4 mr-1"
@@ -50,7 +50,7 @@ const SetPage = () => {
 							words.
 						</p>
 					</div>
-					<Link href="/collection">
+					<Link href="/cards">
 						<span className="flex items-center text-green-600 cursor-pointer">
 							Edit
 							<svg

@@ -17,7 +17,7 @@ const NavBar = () => {
 							<Link href="/home">Home</Link>
 						</li>
 						<li className="mx-3 cursor-pointer">
-							<Link href="/collection">Collection</Link>
+							<Link href="/cards">Collection</Link>
 						</li>
 						<li className="mx-3 cursor-pointer">
 							<Link href="/search">

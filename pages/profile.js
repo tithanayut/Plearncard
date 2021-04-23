@@ -26,7 +26,7 @@ const ProfilePage = () => {
 				<div className="flex justify-between items-center">
 					<p>Joined since 14 May 2020</p>
 					<div className="flex">
-						<Link href="/collection">
+						<Link href="/cards">
 							<span className="flex justify-center items-center w-40 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
 								View Collection
 								<svg

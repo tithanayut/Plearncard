@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Set = (props) => {
 	return (
-		<Link href="/sets/1">
+		<Link href="/cards/1">
 			<div className="flex flex-col justify-end m-1 p-4 text-gray-600 bg-gray-100 rounded-md cursor-pointer hover:shadow">
 				<div>
 					<p className="text-lg font-bold">Thai Level I</p>
