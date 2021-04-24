@@ -42,9 +42,9 @@ const CollectionPage = () => {
 							<p className="flex">
 								Your collection is empty. You may want to
 								<Link href="/create">
-									<p className="ml-1 text-green-600 font-bold cursor-pointer hover:text-green-500">
+									<span className="ml-1 text-green-600 font-bold cursor-pointer hover:text-green-500">
 										Create one
-									</p>
+									</span>
 								</Link>
 							</p>
 						</div>
