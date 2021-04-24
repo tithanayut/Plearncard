@@ -9,10 +9,6 @@ import Sets from "../components/Sets/Sets";
 const CollectionPage = () => {
 	const router = useRouter();
 	const [session, loading] = useSession();
-	if (loading) return null;
-	if (!loading && !session) {
-		router.replace("/login");
-	}
 
 	const [content, setContent] = useState(null);
 	const [totalSet, settotalSet] = useState("#");
@@ -62,6 +58,12 @@ const CollectionPage = () => {
 		);
 	}, [settotalSet]);
 	useEffect(loadSets, [loadSets]);
+
+	// Authentication
+	if (loading) return null;
+	if (!loading && !session) {
+		router.replace("/login");
+	}
 
 	return (
 		<Fragment>
