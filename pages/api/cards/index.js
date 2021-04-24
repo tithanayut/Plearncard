@@ -1,5 +1,6 @@
 import { MongoClient } from "mongodb";
 import jwt from "next-auth/jwt";
+import cuid from "cuid";
 
 const uri = process.env.MONGODB_URI;
 const secret = process.env.SECRET;
@@ -50,6 +51,43 @@ export default async (req, res) => {
 		}
 
 		return res.status(200).json(result);
+	} else if (req.method === "POST") {
+		if (!req.body.topic || !req.body.description) {
+			return res
+				.status(400)
+				.json({ errors: ["Request body not complete"] });
+		}
+
+		const topic = req.body.topic.trim();
+		const description = req.body.description.trim();
+
+		let result;
+		const client = new MongoClient(uri);
+		try {
+			const slug = cuid();
+
+			await client.connect();
+			result = await client
+				.db("plearncard")
+				.collection("cards")
+				.insertOne({
+					userId,
+					slug,
+					name: topic,
+					description,
+					total: 0,
+					cards: [],
+					createdAt: new Date(),
+				});
+		} catch {
+			return res
+				.status(500)
+				.json({ errors: ["Database connection failed"] });
+		} finally {
+			await client.close();
+		}
+
+		return res.status(201).json({ insertedId: result.insertedId });
 	}
 
 	return res.status(405).json({ errors: ["Method not allowed"] });
