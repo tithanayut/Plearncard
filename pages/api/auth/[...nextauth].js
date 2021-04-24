@@ -14,6 +14,10 @@ export default NextAuth({
 	},
 	database: uri,
 	providers: [
+		Providers.LINE({
+			clientId: process.env.LINE_CLIENT_ID,
+			clientSecret: process.env.LINE_CLIENT_SECRET,
+		}),
 		Providers.GitHub({
 			clientId: process.env.GITHUB_CLIENT_ID,
 			clientSecret: process.env.GITHUB_CLIENT_SECRET,
