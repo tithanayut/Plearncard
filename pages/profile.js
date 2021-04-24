@@ -21,7 +21,11 @@ const ProfilePage = () => {
 				<link rel="icon" href="/favicon.svg" />
 			</Head>
 
-			<Profile username="bankbkbkk" />
+			{session ? (
+				<Profile username={session.user.name} />
+			) : (
+				<Profile username="" />
+			)}
 			<div className="w-2/3 mt-8 mx-auto text-gray-600">
 				<div className="flex justify-between items-center">
 					<p>Joined since 14 May 2020</p>
