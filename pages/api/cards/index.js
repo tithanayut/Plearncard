@@ -21,10 +21,11 @@ export default async (req, res) => {
 	const userId = token.sub;
 
 	if (req.method === "GET") {
+		let result;
 		const client = new MongoClient(uri);
 		try {
 			await client.connect();
-			const result = await client
+			result = await client
 				.db("plearncard")
 				.collection("cards")
 				.find(
@@ -40,8 +41,6 @@ export default async (req, res) => {
 					}
 				)
 				.toArray();
-
-			return res.status(200).json(result);
 		} catch {
 			return res
 				.status(500)
@@ -49,6 +48,8 @@ export default async (req, res) => {
 		} finally {
 			await client.close();
 		}
+
+		return res.status(200).json(result);
 	}
 
 	return res.status(405).json({ errors: ["Method not allowed"] });
