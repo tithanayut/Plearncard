@@ -12,27 +12,6 @@ const LoginPage = () => {
 		router.replace("/home");
 	}
 
-	const [loginError, setloginError] = useState(null);
-
-	const usernameField = useRef();
-	const passwordField = useRef();
-
-	const loginHandler = async (event) => {
-		event.preventDefault();
-
-		const result = await signIn("credentials", {
-			redirect: false,
-			username: usernameField.current.value,
-			password: passwordField.current.value,
-		});
-
-		if (!result.error) {
-			router.replace("/home");
-		} else {
-			setloginError(result.error);
-		}
-	};
-
 	return (
 		<Fragment>
 			<Head>
@@ -42,60 +21,50 @@ const LoginPage = () => {
 			<div className="w-2/3 mt-8 mx-auto">
 				<div className="flex justify-center">
 					<h1 className="text-2xl text-green-600 font-bold">
-						Login with Plearncard Account
+						Login to Plearncard
 					</h1>
 				</div>
-				{loginError && (
-					<div className="flex justify-center mt-6">
-						<p className="flex justify-center items-center w-1/2 h-10 text-gray-600 bg-red-100 rounded-lg">
-							<span className="font-bold mr-2">Error:</span>
-							{loginError}
-						</p>
-					</div>
-				)}
 				<div className="flex justify-center mt-6">
-					<form
-						className="flex flex-col items-center text-gray-600"
-						onSubmit={loginHandler}
+					<p className="mr-2 text-green-600 font-bold">Hello!</p>
+					<p>
+						We use OAuth for authentication and authorization here.
+					</p>
+				</div>
+				<div className="flex justify-center mt-1">
+					<p>
+						Click on the button below to choose your favourite
+						provider.
+					</p>
+				</div>
+				<div className="flex justify-center my-12">
+					<span
+						className="flex justify-center items-center w-48 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm"
+						onClick={signIn}
 					>
-						<div className="flex my-1">
-							<label className="font-bold" htmlFor="username">
-								Username:
-							</label>
-							<input
-								className="w-48 h-8 mx-3 border-b-2 outline-none border-gray-400"
-								type="text"
-								id="username"
-								ref={usernameField}
+						Proceed to Login
+						<svg
+							className="w-5 h-5 ml-2"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
 							/>
-						</div>
-						<div className="flex my-1">
-							<label className="font-bold" htmlFor="password">
-								Password:
-							</label>
-							<input
-								className="w-48 h-8 mx-3 border-b-2 outline-none border-gray-400"
-								type="password"
-								id="password"
-								ref={passwordField}
-							/>
-						</div>
-						<div className="mt-6">
-							<input
-								className="w-24 h-10 font-bold text-gray-600 bg-green-200 rounded-md cursor-pointer hover:bg-green-300 hover:shadow-sm"
-								type="submit"
-								value="Login"
-							/>
-						</div>
-					</form>
+						</svg>
+					</span>
 				</div>
 				<div className="flex justify-center mt-8">
-					<p>Don't have an account?</p>
-					<Link href="/register">
-						<p className="ml-2 text-green-600 font-bold cursor-pointer hover:text-green-500">
-							Create one
-						</p>
-					</Link>
+					<p className="mr-2 text-green-600 font-bold">
+						First time at Plearncard?
+					</p>
+					<p>
+						Just click login and select one of our login provider.
+					</p>
 				</div>
 			</div>
 		</Fragment>

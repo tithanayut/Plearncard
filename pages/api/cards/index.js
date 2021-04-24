@@ -18,7 +18,7 @@ export default async (req, res) => {
 		return res.status(401).json({ errors: ["Unauthorized"] });
 	}
 
-	const username = token.user.username;
+	const userId = token.sub;
 
 	if (req.method === "GET") {
 		const client = new MongoClient(uri);
@@ -28,7 +28,7 @@ export default async (req, res) => {
 				.db("plearncard")
 				.collection("cards")
 				.find(
-					{ username },
+					{ userId },
 					{
 						projection: {
 							_id: 0,
