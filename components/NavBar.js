@@ -66,14 +66,9 @@ const NavBar = () => {
 					</li>
 				)}
 				{!session && (
-					<Fragment>
-						<li className="mr-4 cursor-pointer">
-							<Link href="/login">Login</Link>
-						</li>
-						<li className="mr-4 cursor-pointer">
-							<Link href="/register">Register</Link>
-						</li>
-					</Fragment>
+					<li className="mr-4 cursor-pointer">
+						<Link href="/login">Login</Link>
+					</li>
 				)}
 				{session && (
 					<li className="cursor-pointer">

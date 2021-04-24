@@ -12,62 +12,15 @@ export default NextAuth({
 	jwt: {
 		secret: process.env.SECRET,
 	},
+	database: uri,
 	providers: [
-		Providers.Credentials({
-			name: "Plearncard Account",
-			async authorize(credentials) {
-				if (!credentials.username || !credentials.password) {
-					throw new Error("Please fill in username and password");
-				}
-
-				const username = credentials.username.trim().toLowerCase();
-
-				const client = new MongoClient(uri);
-				let user;
-				try {
-					await client.connect();
-					user = await client
-						.db("plearncard")
-						.collection("users")
-						.findOne({
-							username,
-						});
-				} catch (err) {
-					throw new Error("Database connection failed");
-				} finally {
-					await client.close();
-				}
-
-				// Check if user exists
-				if (!user) {
-					throw new Error("Username or password incorrect");
-				}
-
-				// Compare password
-				const result = await validate(
-					credentials.password,
-					user.password
-				);
-				if (!result) {
-					throw new Error("Username or password incorrect");
-				}
-
-				return {
-					username,
-				};
-			},
+		Providers.GitHub({
+			clientId: process.env.GITHUB_CLIENT_ID,
+			clientSecret: process.env.GITHUB_CLIENT_SECRET,
+		}),
+		Providers.WordPress({
+			clientId: process.env.WORDPRESS_CLIENT_ID,
+			clientSecret: process.env.WORDPRESS_CLIENT_SECRET,
 		}),
 	],
-	callbacks: {
-		jwt: async (token, user) => {
-			if (user) {
-				token.user = user;
-			}
-			return Promise.resolve(token);
-		},
-		session: async (session, user) => {
-			session.user = user.user;
-			return Promise.resolve(session);
-		},
-	},
 });
