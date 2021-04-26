@@ -14,6 +14,10 @@ export default NextAuth({
 	},
 	database: uri,
 	providers: [
+		Providers.Twitter({
+			clientId: process.env.TWITTER_CLIENT_ID,
+			clientSecret: process.env.TWITTER_CLIENT_SECRET,
+		}),
 		Providers.LINE({
 			clientId: process.env.LINE_CLIENT_ID,
 			clientSecret: process.env.LINE_CLIENT_SECRET,
