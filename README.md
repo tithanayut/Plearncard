@@ -1,3 +1,3 @@
 # Plearncard
 
-This project is in process of active development.
+This is a work in progress.
