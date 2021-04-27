@@ -38,6 +38,35 @@ export default async (req, res) => {
 		}
 
 		return res.status(200).json(result);
+	} else if (req.method === "DELETE") {
+		let result;
+		const client = new MongoClient(uri);
+		try {
+			await client.connect();
+			// Delete from users
+			await client
+				.db("plearncard")
+				.collection("users")
+				.deleteOne({ _id: ObjectId(userId) });
+			// Delete from accounts
+			await client
+				.db("plearncard")
+				.collection("accounts")
+				.deleteOne({ userId: ObjectId(userId) });
+			// Delete cards
+			await client
+				.db("plearncard")
+				.collection("cards")
+				.deleteMany({ userId });
+		} catch {
+			return res
+				.status(500)
+				.json({ errors: ["Database connection failed"] });
+		} finally {
+			await client.close();
+		}
+
+		return res.status(200).json({ message: "Account deleted" });
 	}
 
 	return res.status(405).json({ errors: ["Method not allowed"] });
