@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { useState, useEffect, useCallback, Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,9 +6,43 @@ import { useSession } from "next-auth/client";
 
 import Profile from "../components/Profile";
 
+const MONTH = [
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December",
+];
+
 const ProfilePage = () => {
 	const router = useRouter();
 	const [session, loading] = useSession();
+
+	const [joinedSince, setjoinedSince] = useState(null);
+	const loadProfile = useCallback(async () => {
+		const res = await fetch("/api/users/me");
+		const data = await res.json();
+
+		const date = new Date(data.createdAt);
+
+		setjoinedSince(
+			date.getDate() +
+				" " +
+				MONTH[date.getMonth()] +
+				" " +
+				date.getFullYear()
+		);
+	}, [setjoinedSince]);
+	useEffect(loadProfile, [loadProfile]);
+
+	// Authentication
 	if (loading) return null;
 	if (!loading && !session) {
 		router.replace("/login");
@@ -28,7 +62,7 @@ const ProfilePage = () => {
 			)}
 			<div className="w-2/3 mt-8 mx-auto text-gray-600">
 				<div className="flex justify-between items-center">
-					<p>Joined since 14 May 2020</p>
+					<p>Joined since {joinedSince ? joinedSince : "..."}</p>
 					<div className="flex">
 						<Link href="/cards">
 							<span className="flex justify-center items-center w-40 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
