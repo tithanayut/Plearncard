@@ -22,6 +22,15 @@ export default async (req, res) => {
 	const userId = token.sub;
 
 	if (req.method === "GET") {
+		let searchQuery = { userId };
+
+		if (typeof req.query.q !== "undefined") {
+			searchQuery = {
+				userId,
+				name: { $regex: req.query.q, $options: "i" },
+			};
+		}
+
 		let result;
 		const client = new MongoClient(uri);
 		try {
@@ -29,18 +38,15 @@ export default async (req, res) => {
 			result = await client
 				.db("plearncard")
 				.collection("cards")
-				.find(
-					{ userId },
-					{
-						projection: {
-							_id: 0,
-							slug: 1,
-							name: 1,
-							total: 1,
-							createdAt: 1,
-						},
-					}
-				)
+				.find(searchQuery, {
+					projection: {
+						_id: 0,
+						slug: 1,
+						name: 1,
+						total: 1,
+						createdAt: 1,
+					},
+				})
 				.toArray();
 		} catch {
 			return res
