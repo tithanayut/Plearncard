@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
 
-import Sets from "../components/Sets/Sets";
+import Sets from "../../components/Sets/Sets";
 
 const CollectionPage = () => {
 	const router = useRouter();
