@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
 
-import Profile from "../components/Profile";
+import Profile from "../../components/Profile";
 
 const MONTH = [
 	"January",
@@ -106,25 +106,29 @@ const ProfilePage = () => {
 				</div>
 				<div className="mt-4">
 					<h2 className="text-2xl font-bold text-green-600">
-						Account Settings
+						Account Setting
 					</h2>
 					<ul className="flex flex-col mt-2 font-semibold">
 						<li className="flex items-center my-1 text-red-600 cursor-pointer">
-							<svg
-								className="w-4 h-4 mr-1"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth={2}
-									d="M6 18L18 6M6 6l12 12"
-								/>
-							</svg>
-							Delete account
+							<Link href="/profile/delete">
+								<span className="flex items-center">
+									<svg
+										className="w-4 h-4 mr-1"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											strokeWidth={2}
+											d="M6 18L18 6M6 6l12 12"
+										/>
+									</svg>
+									Delete account
+								</span>
+							</Link>
 						</li>
 					</ul>
 				</div>
