@@ -26,6 +26,7 @@ const CreatePage = () => {
 		setSubmitting(true);
 
 		if (!topicField.current.value || !descriptionField.current.value) {
+			setSubmitting(false);
 			setMessage("Please complete all fields");
 			return;
 		}
@@ -43,6 +44,7 @@ const CreatePage = () => {
 		const data = await res.json();
 
 		if (data.errors) {
+			setSubmitting(false);
 			setMessage(data.errors.join(", "));
 			return;
 		}
