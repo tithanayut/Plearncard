@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState, useCallback, useEffect, Fragment } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
@@ -6,19 +6,14 @@ import { useSession } from "next-auth/client";
 import Sets from "../components/Sets/Sets";
 
 const SearchPage = () => {
-	const [content, setContent] = useState(null);
-	const [totalSet, settotalSet] = useState("0");
-
 	const router = useRouter();
 	const [session, loading] = useSession();
-	if (loading) return null;
-	if (!loading && !session) {
-		router.replace("/login");
-	}
 
-	const searchHandler = async (event) => {
-		const query = event.target.value;
-		const res = await fetch("/api/cards?q=" + encodeURI(query));
+	const [initialSets, setinitialSets] = useState([]);
+	const [totalSet, settotalSet] = useState(0);
+	const [content, setContent] = useState(null);
+	const loadSets = useCallback(async () => {
+		const res = await fetch("/api/cards");
 		const data = await res.json();
 
 		if (data.errors) {
@@ -33,8 +28,30 @@ const SearchPage = () => {
 			return;
 		}
 
-		if (data.length === 0) {
+		setinitialSets(data);
+	}, [setinitialSets, setContent]);
+	useEffect(loadSets, [loadSets]);
+
+	// Authentication
+	if (loading) return null;
+	if (!loading && !session) {
+		router.replace("/login");
+	}
+
+	const searchHandler = (event) => {
+		const query = event.target.value;
+		if (!query) {
 			settotalSet(0);
+			setContent(null);
+			return;
+		}
+
+		const data = initialSets.filter((set) =>
+			set.name.match(new RegExp(query, "i"))
+		);
+		settotalSet(data.length);
+
+		if (data.length === 0) {
 			setContent(
 				<div className="flex justify-center mt-6">
 					<p className="flex justify-center items-center w-1/2 py-3 text-gray-600 bg-green-100 rounded-lg">
@@ -45,7 +62,6 @@ const SearchPage = () => {
 			return;
 		}
 
-		settotalSet(data.length);
 		setContent(
 			<div>
 				<Sets sets={data} />
@@ -84,7 +100,11 @@ const SearchPage = () => {
 
 				<p className="mt-8">
 					Found{" "}
-					{totalSet > 1 ? totalSet + " sets" : totalSet + " set"}{" "}
+					{content
+						? totalSet > 1
+							? totalSet + " sets"
+							: totalSet + " set"
+						: "0 set"}{" "}
 					match with your search.
 				</p>
 				{content}
