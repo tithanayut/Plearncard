@@ -99,13 +99,10 @@ const SearchPage = () => {
 				</form>
 
 				<p className="mt-8">
-					Found{" "}
-					{content
-						? totalSet > 1
-							? totalSet + " sets"
-							: totalSet + " set"
-						: "0 set"}{" "}
-					match with your search.
+					{content &&
+						(totalSet > 1
+							? `Found ${totalSet} sets match with your search`
+							: `Found ${totalSet} set match with your search`)}
 				</p>
 				{content}
 			</div>
