@@ -20,7 +20,7 @@ const Set = (props) => {
 
 	return (
 		<Link href={"/cards/" + props.slug}>
-			<div className="flex flex-col justify-end m-1 p-4 text-gray-600 bg-gray-100 rounded-md cursor-pointer hover:shadow">
+			<div className="flex flex-col justify-between m-1 p-4 text-gray-600 bg-gray-100 rounded-md cursor-pointer hover:shadow">
 				<div>
 					<p className="text-lg font-bold">{props.name}</p>
 					<p>
