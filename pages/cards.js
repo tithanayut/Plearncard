@@ -56,7 +56,7 @@ const CollectionPage = () => {
 				<Sets sets={data} />
 			</div>
 		);
-	}, [settotalSet]);
+	}, [settotalSet, setContent]);
 	useEffect(loadSets, [loadSets]);
 
 	// Authentication
