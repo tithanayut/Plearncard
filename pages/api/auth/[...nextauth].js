@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 
+const uri = process.env.MONGODB_URI;
+
 export default NextAuth({
 	session: {
 		jwt: true,
