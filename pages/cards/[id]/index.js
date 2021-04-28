@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { useState, useEffect, useCallback, Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -7,6 +7,23 @@ import { useSession } from "next-auth/client";
 const SetPage = () => {
 	const router = useRouter();
 	const [session, loading] = useSession();
+
+	const id = router.query.id;
+	const [data, setData] = useState(null);
+	const loadSet = useCallback(async () => {
+		if (!id) {
+			router.replace("/home");
+			return;
+		}
+
+		const res = await fetch("/api/cards/" + id);
+		const data = await res.json();
+
+		setData(data);
+	}, [setData]);
+	useEffect(loadSet, [loadSet]);
+
+	// Authentication
 	if (loading) return null;
 	if (!loading && !session) {
 		router.replace("/login");
@@ -43,14 +60,13 @@ const SetPage = () => {
 				<div className="flex justify-between">
 					<div>
 						<p className="text-2xl mt-6 text-green-600 font-bold">
-							Thai Level I
+							{data ? data.name : "Loading..."}
 						</p>
 						<p className="text-gray-600 font-semibold mt-2">
-							Learn Thai from the beginning. Starts with simple
-							words.
+							{data ? data.description : "#"}
 						</p>
 					</div>
-					<Link href="/cards">
+					<Link href={"/cards/" + id + "/edit"}>
 						<span className="flex items-center text-green-600 cursor-pointer">
 							Edit
 							<svg
