@@ -87,7 +87,7 @@ const SearchPage = () => {
 				>
 					<div className="my-2">
 						<label className="font-bold" htmlFor="topic">
-							Topic/Description
+							Topic
 						</label>
 						<input
 							className="w-96 h-8 mx-3 border-b-2 outline-none border-gray-400"
