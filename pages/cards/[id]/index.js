@@ -23,11 +23,38 @@ const SetPage = () => {
 	}, [setData]);
 	useEffect(loadSet, [loadSet]);
 
+	const [currentCard, setCurrentCard] = useState(0);
+	const [viewState, setViewState] = useState(false);
+
 	// Authentication
 	if (loading) return null;
 	if (!loading && !session) {
 		router.replace("/login");
 	}
+
+	const flipCardHandler = () => {
+		setViewState((prevState) => !prevState);
+	};
+
+	const changeCardHandler = (action) => {
+		if (action === "next") {
+			setCurrentCard((prevState) => {
+				setViewState(false);
+				if (prevState + 1 > data.cards.length - 1) {
+					return 0;
+				}
+				return prevState + 1;
+			});
+		} else {
+			setCurrentCard((prevState) => {
+				setViewState(false);
+				if (prevState - 1 < 0) {
+					return data.cards.length - 1;
+				}
+				return prevState - 1;
+			});
+		}
+	};
 
 	return (
 		<Fragment>
@@ -37,33 +64,13 @@ const SetPage = () => {
 			</Head>
 
 			<div className="w-2/3 mt-8 mx-auto ">
-				<Link href="/cards">
-					<span className="flex items-center text-gray-600 cursor-pointer">
-						<svg
-							className="w-4 h-4 mr-1"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth={2}
-								d="M15 19l-7-7 7-7"
-							/>
-						</svg>
-						Back to Collection
-					</span>
-				</Link>
-
 				<div className="flex justify-between">
 					<div>
 						<p className="text-2xl mt-6 text-green-600 font-bold">
 							{data ? data.name : "Loading..."}
 						</p>
 						<p className="text-gray-600 font-semibold mt-2">
-							{data ? data.description : "#"}
+							{data ? data.description : "..."}
 						</p>
 					</div>
 					<Link href={"/cards/" + id + "/edit"}>
@@ -86,8 +93,41 @@ const SetPage = () => {
 						</span>
 					</Link>
 				</div>
+			</div>
+
+			<div className="w-2/3 mt-4 mx-auto select-none">
+				<Link href="/cards">
+					<span className="flex items-center text-gray-600 cursor-pointer">
+						<svg
+							className="w-4 h-4 mr-1"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M15 19l-7-7 7-7"
+							/>
+						</svg>
+						Back to Collection
+					</span>
+				</Link>
+				<div className="mt-2 text-lg text-center text-gray-600 font-bold">
+					<p>
+						Card {currentCard + 1} of{" "}
+						{data ? data.cards.length : "..."}
+					</p>
+				</div>
 				<div className="flex justify-around items-center">
-					<div className="flex justify-end w-1/4 cursor-pointer">
+					<div
+						className="flex justify-end w-1/4 cursor-pointer"
+						onClick={() => {
+							changeCardHandler("previous");
+						}}
+					>
 						<svg
 							className="w-6 h-6 mr-4"
 							fill="none"
@@ -103,21 +143,32 @@ const SetPage = () => {
 							/>
 						</svg>
 					</div>
-					<div className="flex justify-center w-1/2">
+					<div
+						className="flex justify-center w-1/2 cursor-pointer"
+						onClick={flipCardHandler}
+					>
 						<div
-							className="flex justify-center items-center w-96 mt-8 bg-green-100 rounded-xl"
+							className={[
+								"flex justify-center items-center w-96 mt-4 rounded-xl",
+								!viewState ? "bg-green-100" : "bg-yellow-100",
+							].join(" ")}
 							style={{ minHeight: "300px" }}
 						>
 							<p className="text-xl text-gray-600 font-semibold p-6">
-								lorem lorem lorem lorem lorem lorem lorem
-								loremlorem lorem lorem loremlorem lorem lorem
-								loremlorem lorem lorem loremlorem lorem lorem
-								loremlorem lorem lorem loremlorem lorem lorem
-								lorem
+								{data
+									? !viewState
+										? data.cards[currentCard].front
+										: data.cards[currentCard].back
+									: "..."}
 							</p>
 						</div>
 					</div>
-					<div className="flex justify-start w-1/4 cursor-pointer">
+					<div
+						className="flex justify-start w-1/4 cursor-pointer"
+						onClick={() => {
+							changeCardHandler("next");
+						}}
+					>
 						<svg
 							className="w-6 h-6 ml-4"
 							fill="none"
@@ -134,7 +185,10 @@ const SetPage = () => {
 						</svg>
 					</div>
 				</div>
-				<div className="flex justify-center items-center text-gray-600 mt-6 font-semibold cursor-pointer">
+				<div
+					className="flex justify-center items-center text-gray-600 mt-6 font-semibold cursor-pointer"
+					onClick={flipCardHandler}
+				>
 					Flip
 					<svg
 						className="w-5 h-5 ml-2"
