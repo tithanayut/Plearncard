@@ -23,12 +23,18 @@ export default async (req, res) => {
 
 	if (req.method === "GET") {
 		let searchQuery = { userId };
+		let sort = {};
+		let limit = 0;
 
 		if (typeof req.query.q !== "undefined") {
 			searchQuery = {
 				userId,
 				name: { $regex: req.query.q, $options: "i" },
 			};
+		}
+		if (typeof req.query.recent !== "undefined") {
+			sort = { lastViewedAt: -1 };
+			limit = parseInt(req.query.recent);
 		}
 
 		let result;
@@ -47,6 +53,8 @@ export default async (req, res) => {
 						createdAt: 1,
 					},
 				})
+				.sort(sort)
+				.limit(limit)
 				.toArray();
 		} catch {
 			return res
@@ -84,6 +92,7 @@ export default async (req, res) => {
 					total: 0,
 					cards: [],
 					createdAt: new Date(),
+					lastViewedAt: new Date(),
 				});
 		} catch {
 			return res
