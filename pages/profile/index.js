@@ -30,6 +30,11 @@ const ProfilePage = () => {
 		const res = await fetch("/api/users/me");
 		const data = await res.json();
 
+		if (data.errors) {
+			setjoinedSince("...");
+			return;
+		}
+
 		const date = new Date(data.createdAt);
 
 		setjoinedSince(

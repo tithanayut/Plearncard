@@ -10,6 +10,7 @@ const SetPage = () => {
 
 	const id = router.query.id;
 	const [data, setData] = useState(null);
+	const [message, setMessage] = useState(null);
 	const loadSet = useCallback(async () => {
 		if (!id) {
 			router.replace("/home");
@@ -19,8 +20,13 @@ const SetPage = () => {
 		const res = await fetch("/api/cards/" + id);
 		const data = await res.json();
 
+		if (data.errors) {
+			setMessage(data.errors.join(", "));
+			return;
+		}
+
 		setData(data);
-	}, [setData]);
+	}, [setData, setMessage]);
 	useEffect(loadSet, [loadSet]);
 
 	const [currentCard, setCurrentCard] = useState(0);
@@ -67,7 +73,7 @@ const SetPage = () => {
 				<div className="flex justify-between">
 					<div>
 						<p className="text-2xl mt-6 text-green-600 font-bold">
-							{data ? data.name : "Loading..."}
+							{data ? data.name : "..."}
 						</p>
 						<p className="text-gray-600 font-semibold mt-2">
 							{data ? data.description : "..."}
@@ -116,8 +122,25 @@ const SetPage = () => {
 					</span>
 				</Link>
 
-				{data ? (
-					data.cards.length > 0 ? (
+				{!data && !message ? (
+					<div className="flex justify-center mt-6">
+						<p className="flex justify-center items-center w-1/2 py-3 text-green-600 bg-gray-100 rounded-lg">
+							<span className="font-bold mr-2">Loading...</span>
+						</p>
+					</div>
+				) : (
+					message && (
+						<div className="flex justify-center mt-6">
+							<p className="flex justify-center items-center w-1/2 py-3 text-gray-600 bg-red-100 rounded-lg">
+								<span className="font-bold mr-2">Error:</span>
+								{message}
+							</p>
+						</div>
+					)
+				)}
+
+				{data &&
+					(data.cards.length > 0 ? (
 						<Fragment>
 							<div className="mt-2 text-lg text-center text-gray-600 font-bold">
 								<p>
@@ -161,13 +184,9 @@ const SetPage = () => {
 										style={{ minHeight: "300px" }}
 									>
 										<p className="text-xl text-gray-600 font-semibold p-6">
-											{data
-												? !viewState
-													? data.cards[currentCard]
-															.front
-													: data.cards[currentCard]
-															.back
-												: "..."}
+											{data && !viewState
+												? data.cards[currentCard].front
+												: data.cards[currentCard].back}
 										</p>
 									</div>
 								</div>
@@ -222,14 +241,7 @@ const SetPage = () => {
 								</span>
 							</p>
 						</div>
-					)
-				) : (
-					<div className="flex justify-center mt-6">
-						<p className="flex justify-center items-center w-1/2 py-3 text-green-600 bg-gray-100 rounded-lg">
-							<span className="font-bold mr-2">Loading...</span>
-						</p>
-					</div>
-				)}
+					))}
 			</div>
 		</Fragment>
 	);
