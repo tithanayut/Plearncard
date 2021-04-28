@@ -115,96 +115,121 @@ const SetPage = () => {
 						Back to Collection
 					</span>
 				</Link>
-				<div className="mt-2 text-lg text-center text-gray-600 font-bold">
-					<p>
-						Card {currentCard + 1} of{" "}
-						{data ? data.cards.length : "..."}
-					</p>
-				</div>
-				<div className="flex justify-around items-center">
-					<div
-						className="flex justify-end w-1/4 cursor-pointer"
-						onClick={() => {
-							changeCardHandler("previous");
-						}}
-					>
-						<svg
-							className="w-6 h-6 mr-4"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth={2}
-								d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
-							/>
-						</svg>
-					</div>
-					<div
-						className="flex justify-center w-1/2 cursor-pointer"
-						onClick={flipCardHandler}
-					>
-						<div
-							className={[
-								"flex justify-center items-center w-96 mt-4 rounded-xl",
-								!viewState ? "bg-green-100" : "bg-yellow-100",
-							].join(" ")}
-							style={{ minHeight: "300px" }}
-						>
-							<p className="text-xl text-gray-600 font-semibold p-6">
-								{data
-									? !viewState
-										? data.cards[currentCard].front
-										: data.cards[currentCard].back
-									: "..."}
+
+				{data ? (
+					data.cards.length > 0 ? (
+						<Fragment>
+							<div className="mt-2 text-lg text-center text-gray-600 font-bold">
+								<p>
+									Card {currentCard + 1} of{" "}
+									{data ? data.cards.length : "..."}
+								</p>
+							</div>
+							<div className="flex justify-around items-center">
+								<div
+									className="flex justify-end w-1/4 cursor-pointer"
+									onClick={() => {
+										changeCardHandler("previous");
+									}}
+								>
+									<svg
+										className="w-6 h-6 mr-4"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											strokeWidth={2}
+											d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
+										/>
+									</svg>
+								</div>
+								<div
+									className="flex justify-center w-1/2 cursor-pointer"
+									onClick={flipCardHandler}
+								>
+									<div
+										className={[
+											"flex justify-center items-center w-96 mt-4 rounded-xl",
+											!viewState
+												? "bg-green-100"
+												: "bg-yellow-100",
+										].join(" ")}
+										style={{ minHeight: "300px" }}
+									>
+										<p className="text-xl text-gray-600 font-semibold p-6">
+											{data
+												? !viewState
+													? data.cards[currentCard]
+															.front
+													: data.cards[currentCard]
+															.back
+												: "..."}
+										</p>
+									</div>
+								</div>
+								<div
+									className="flex justify-start w-1/4 cursor-pointer"
+									onClick={() => {
+										changeCardHandler("next");
+									}}
+								>
+									<svg
+										className="w-6 h-6 ml-4"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											strokeWidth={2}
+											d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+										/>
+									</svg>
+								</div>
+							</div>
+							<div
+								className="flex justify-center items-center text-gray-600 mt-6 font-semibold cursor-pointer"
+								onClick={flipCardHandler}
+							>
+								Flip
+								<svg
+									className="w-5 h-5 ml-2"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth={2}
+										d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+									/>
+								</svg>
+							</div>
+						</Fragment>
+					) : (
+						<div className="flex justify-center mt-6">
+							<p className="flex justify-center items-center w-1/2 py-3 text-red-600 bg-gray-100 rounded-lg">
+								<span className="font-bold mr-2">
+									There is no card in this set.
+								</span>
 							</p>
 						</div>
+					)
+				) : (
+					<div className="flex justify-center mt-6">
+						<p className="flex justify-center items-center w-1/2 py-3 text-green-600 bg-gray-100 rounded-lg">
+							<span className="font-bold mr-2">Loading...</span>
+						</p>
 					</div>
-					<div
-						className="flex justify-start w-1/4 cursor-pointer"
-						onClick={() => {
-							changeCardHandler("next");
-						}}
-					>
-						<svg
-							className="w-6 h-6 ml-4"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth={2}
-								d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
-							/>
-						</svg>
-					</div>
-				</div>
-				<div
-					className="flex justify-center items-center text-gray-600 mt-6 font-semibold cursor-pointer"
-					onClick={flipCardHandler}
-				>
-					Flip
-					<svg
-						className="w-5 h-5 ml-2"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth={2}
-							d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-						/>
-					</svg>
-				</div>
+				)}
 			</div>
 		</Fragment>
 	);
