@@ -1,5 +1,4 @@
-import { useState, useEffect, useCallback, Fragment } from "react";
-import Head from "next/head";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
@@ -55,53 +54,42 @@ const HomePage = () => {
 	}
 
 	return (
-		<Fragment>
-			<Head>
-				<title>Plearncard</title>
-				<link rel="icon" href="/favicon.svg" />
-			</Head>
-
-			<div className="w-2/3 mt-8 mx-auto">
-				<div className="flex justify-between items-center">
-					<div>
-						<h1 className="text-2xl text-green-600 font-bold">
-							Welcome to Plearncard!
-						</h1>
-						<p className="text-gray-600 mt-2">
-							Below is your recent sets. Or click create to build
-							new one.
-						</p>
-					</div>
-					<Link href="/create">
-						<span className="flex justify-center items-center w-24 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
-							Create
-							<svg
-								className="w-5 h-5 ml-1"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth={2}
-									d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-								></path>
-							</svg>
-						</span>
-					</Link>
+		<div className="w-2/3 mt-8 mx-auto">
+			<div className="flex justify-between items-center">
+				<div>
+					<h1 className="text-2xl text-green-600 font-bold">
+						Welcome to Plearncard!
+					</h1>
+					<p className="text-gray-600 mt-2">
+						Below is your recent sets. Or click create to build new
+						one.
+					</p>
 				</div>
-				<div className="mt-6">
-					<p className="text-gray-600 font-bold">Recent</p>
-					{content ? (
-						content
-					) : (
-						<div className="loader">Loading...</div>
-					)}
-				</div>
+				<Link href="/create">
+					<span className="flex justify-center items-center w-24 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
+						Create
+						<svg
+							className="w-5 h-5 ml-1"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+							></path>
+						</svg>
+					</span>
+				</Link>
 			</div>
-		</Fragment>
+			<div className="mt-6">
+				<p className="text-gray-600 font-bold">Recent</p>
+				{content ? content : <div className="loader">Loading...</div>}
+			</div>
+		</div>
 	);
 };
 

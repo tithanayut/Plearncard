@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, Fragment } from "react";
-import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
@@ -64,11 +63,6 @@ const SetPage = () => {
 
 	return (
 		<Fragment>
-			<Head>
-				<title>Plearncard</title>
-				<link rel="icon" href="/favicon.svg" />
-			</Head>
-
 			<div className="w-2/3 mt-8 mx-auto ">
 				<div className="flex justify-between">
 					<div>

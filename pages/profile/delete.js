@@ -1,5 +1,4 @@
 import { useState, Fragment } from "react";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/client";
 
@@ -33,11 +32,6 @@ const ProfileDeletePage = () => {
 
 	return (
 		<Fragment>
-			<Head>
-				<title>Plearncard</title>
-				<link rel="icon" href="/favicon.svg" />
-			</Head>
-
 			{session ? (
 				<Profile username={session.user.name} />
 			) : (

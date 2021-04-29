@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, Fragment } from "react";
-import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
@@ -55,11 +54,6 @@ const ProfilePage = () => {
 
 	return (
 		<Fragment>
-			<Head>
-				<title>Plearncard</title>
-				<link rel="icon" href="/favicon.svg" />
-			</Head>
-
 			{session ? (
 				<Profile username={session.user.name} />
 			) : (
