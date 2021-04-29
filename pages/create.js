@@ -101,6 +101,7 @@ const CreatePage = () => {
 							value="Create!"
 						/>
 					</div>
+					{submitting && <div className="loader">Loading...</div>}
 				</form>
 			</div>
 		</Fragment>

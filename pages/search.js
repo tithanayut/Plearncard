@@ -9,7 +9,7 @@ const SearchPage = () => {
 	const router = useRouter();
 	const [session, loading] = useSession();
 
-	const [initialSets, setinitialSets] = useState([]);
+	const [initialSets, setinitialSets] = useState(null);
 	const [totalSet, settotalSet] = useState(0);
 	const [content, setContent] = useState(null);
 	const loadSets = useCallback(async () => {
@@ -85,17 +85,21 @@ const SearchPage = () => {
 						e.preventDefault();
 					}}
 				>
-					<div className="my-2">
-						<label className="font-bold" htmlFor="topic">
-							Topic
-						</label>
-						<input
-							className="w-96 h-8 mx-3 border-b-2 outline-none border-gray-400"
-							type="text"
-							id="topic"
-							onChange={searchHandler}
-						></input>
-					</div>
+					{initialSets ? (
+						<div className="my-2">
+							<label className="font-bold" htmlFor="topic">
+								Topic
+							</label>
+							<input
+								className="w-96 h-8 mx-3 border-b-2 outline-none border-gray-400"
+								type="text"
+								id="topic"
+								onChange={searchHandler}
+							></input>
+						</div>
+					) : (
+						<div className="loader">Loading...</div>
+					)}
 				</form>
 
 				<p className="mt-8">

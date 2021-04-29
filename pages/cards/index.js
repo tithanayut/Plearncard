@@ -99,7 +99,7 @@ const CollectionPage = () => {
 						</span>
 					</Link>
 				</div>
-				{content}
+				{content ? content : <div className="loader">Loading...</div>}
 			</div>
 		</Fragment>
 	);

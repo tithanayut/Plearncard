@@ -123,11 +123,7 @@ const SetPage = () => {
 				</Link>
 
 				{!data && !message ? (
-					<div className="flex justify-center mt-6">
-						<p className="flex justify-center items-center w-1/2 py-3 text-green-600 bg-gray-100 rounded-lg">
-							<span className="font-bold mr-2">Loading...</span>
-						</p>
-					</div>
+					<div className="loader">Loading...</div>
 				) : (
 					message && (
 						<div className="flex justify-center mt-6">

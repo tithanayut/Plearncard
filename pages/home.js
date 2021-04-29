@@ -94,7 +94,11 @@ const HomePage = () => {
 				</div>
 				<div className="mt-6">
 					<p className="text-gray-600 font-bold">Recent</p>
-					{content}
+					{content ? (
+						content
+					) : (
+						<div className="loader">Loading...</div>
+					)}
 				</div>
 			</div>
 		</Fragment>
