@@ -53,19 +53,10 @@ const ProfilePage = () => {
 		router.replace("/login");
 	}
 
-	return (
-		<Fragment>
-			<Head>
-				<title>Plearncard</title>
-				<link rel="icon" href="/favicon.svg" />
-			</Head>
-
-			{session ? (
-				<Profile username={session.user.name} />
-			) : (
-				<Profile username="" />
-			)}
-			<div className="w-2/3 mt-8 mx-auto text-gray-600">
+	let content = <div className="loader">Loading...</div>;
+	if (joinedSince) {
+		content = (
+			<Fragment>
 				<div className="flex justify-between items-center">
 					<p>Joined since {joinedSince ? joinedSince : "..."}</p>
 					<div className="flex">
@@ -137,7 +128,24 @@ const ProfilePage = () => {
 						</li>
 					</ul>
 				</div>
-			</div>
+			</Fragment>
+		);
+	}
+
+	return (
+		<Fragment>
+			<Head>
+				<title>Plearncard</title>
+				<link rel="icon" href="/favicon.svg" />
+			</Head>
+
+			{session ? (
+				<Profile username={session.user.name} />
+			) : (
+				<Profile username="" />
+			)}
+
+			<div className="w-2/3 mt-8 mx-auto text-gray-600">{content}</div>
 		</Fragment>
 	);
 };
