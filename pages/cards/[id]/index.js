@@ -65,14 +65,25 @@ const SetPage = () => {
 		<Fragment>
 			<div className="w-2/3 mt-8 mx-auto ">
 				<div className="flex justify-between">
-					<div>
-						<p className="text-2xl mt-6 text-green-600 font-bold">
-							{data ? data.name : "..."}
-						</p>
-						<p className="text-gray-600 font-semibold mt-2">
-							{data ? data.description : "..."}
-						</p>
-					</div>
+					<Link href="/cards">
+						<span className="flex items-center text-gray-600 cursor-pointer">
+							<svg
+								className="w-4 h-4 mr-1"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M15 19l-7-7 7-7"
+								/>
+							</svg>
+							Back to Collection
+						</span>
+					</Link>
 					<Link href={"/cards/" + id + "/edit"}>
 						<span className="flex items-center text-green-600 cursor-pointer">
 							Edit
@@ -96,31 +107,20 @@ const SetPage = () => {
 			</div>
 
 			<div className="w-2/3 mt-4 mx-auto select-none">
-				<Link href="/cards">
-					<span className="flex items-center text-gray-600 cursor-pointer">
-						<svg
-							className="w-4 h-4 mr-1"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth={2}
-								d="M15 19l-7-7 7-7"
-							/>
-						</svg>
-						Back to Collection
-					</span>
-				</Link>
+				<div className="select-text">
+					<p className="text-2xl mt-6 text-green-600 font-bold">
+						{data && data.name}
+					</p>
+					<p className="text-gray-600 font-semibold mt-2">
+						{data && data.description}
+					</p>
+				</div>
 
 				{!data && !message ? (
 					<div className="loader">Loading...</div>
 				) : (
 					message && (
-						<div className="flex justify-center mt-6">
+						<div className="flex justify-center mt-6 select-text">
 							<p className="flex justify-center items-center w-1/2 py-3 text-gray-600 bg-red-100 rounded-lg">
 								<span className="font-bold mr-2">Error:</span>
 								{message}
@@ -173,7 +173,7 @@ const SetPage = () => {
 										].join(" ")}
 										style={{ minHeight: "300px" }}
 									>
-										<p className="text-xl text-gray-600 font-semibold p-6">
+										<p className="text-xl text-center text-gray-600 font-semibold p-6">
 											{data && !viewState
 												? data.cards[currentCard].front
 												: data.cards[currentCard].back}
@@ -224,7 +224,7 @@ const SetPage = () => {
 							</div>
 						</Fragment>
 					) : (
-						<div className="flex justify-center mt-6">
+						<div className="flex justify-center mt-6 select-text">
 							<p className="flex justify-center items-center w-1/2 py-3 text-red-600 bg-gray-100 rounded-lg">
 								<span className="font-bold mr-2">
 									There is no card in this set.

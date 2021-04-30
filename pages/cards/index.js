@@ -68,9 +68,15 @@ const CollectionPage = () => {
 		<div className="w-2/3 mt-8 mx-auto">
 			<div className="flex justify-between items-center">
 				<p className="text-gray-600">
-					You have{" "}
-					{totalSet > 1 ? totalSet + " sets" : totalSet + " set"} of
-					cards in your collection.
+					{content && (
+						<span>
+							You have{" "}
+							{totalSet > 1
+								? totalSet + " sets"
+								: totalSet + " set"}{" "}
+							of cards in your collection.
+						</span>
+					)}
 				</p>
 				<Link href="/create">
 					<span className="flex justify-center items-center w-24 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
