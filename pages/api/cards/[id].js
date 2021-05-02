@@ -97,6 +97,31 @@ export default async (req, res) => {
 		}
 
 		return res.status(200).json(result.value);
+	} else if (req.method === "DELETE") {
+		if (!req.query.id) {
+			return res
+				.status(400)
+				.json({ errors: ["Request body not complete"] });
+		}
+
+		const slug = req.query.id;
+
+		const client = new MongoClient(uri);
+		try {
+			await client.connect();
+			await client
+				.db("plearncard")
+				.collection("cards")
+				.deleteOne({ userId, slug });
+		} catch {
+			return res
+				.status(500)
+				.json({ errors: ["Database connection failed"] });
+		} finally {
+			await client.close();
+		}
+
+		return res.status(200).json({ message: "Deleted" });
 	}
 
 	return res.status(405).json({ errors: ["Method not allowed"] });
