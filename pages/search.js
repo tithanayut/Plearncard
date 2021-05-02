@@ -91,16 +91,18 @@ const SearchPage = () => {
 						></input>
 					</div>
 				) : (
-					<div className="loader">Loading...</div>
+					!content && <div className="loader">Loading...</div>
 				)}
 			</form>
 
-			<p className="mt-8">
-				{content &&
-					(totalSet > 1
-						? `Found ${totalSet} sets match with your search`
-						: `Found ${totalSet} set match with your search`)}
-			</p>
+			{initialSets &&
+				content &&
+				(totalSet > 1 ? (
+					<p className="mt-8">{`Found ${totalSet} sets match with your search`}</p>
+				) : (
+					<p className="mt-8">{`Found ${totalSet} set match with your search`}</p>
+				))}
+
 			{content}
 		</div>
 	);
