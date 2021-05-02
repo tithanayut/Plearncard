@@ -8,7 +8,7 @@ const Layout = (props) => {
 			<header>
 				<NavBar />
 			</header>
-			<main>{props.children}</main>
+			<main className="mb-8">{props.children}</main>
 		</Fragment>
 	);
 };
