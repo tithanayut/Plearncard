@@ -20,8 +20,7 @@ const EditSetPage = () => {
 	const [message, setMessage] = useState(null);
 	const loadSet = useCallback(async () => {
 		if (!id) {
-			router.replace("/home");
-			return;
+			return null;
 		}
 
 		const res = await fetch("/api/cards/" + id);
@@ -40,7 +39,7 @@ const EditSetPage = () => {
 
 		setInitData(data);
 		setLoading(false);
-	}, [setInitData, setMessage]);
+	}, [setInitData, setMessage, id]);
 	useEffect(loadSet, [loadSet]);
 
 	// Authentication

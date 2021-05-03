@@ -12,8 +12,7 @@ const SetPage = () => {
 	const [message, setMessage] = useState(null);
 	const loadSet = useCallback(async () => {
 		if (!id) {
-			router.replace("/home");
-			return;
+			return null;
 		}
 
 		const res = await fetch("/api/cards/" + id);
@@ -25,7 +24,7 @@ const SetPage = () => {
 		}
 
 		setData(data);
-	}, [setData, setMessage]);
+	}, [setData, setMessage, id]);
 	useEffect(loadSet, [loadSet]);
 
 	const [currentCard, setCurrentCard] = useState(0);
