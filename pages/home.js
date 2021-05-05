@@ -17,7 +17,7 @@ const HomePage = () => {
 		if (data.errors) {
 			setContent(
 				<div className="flex justify-center mt-6">
-					<p className="flex justify-center items-center w-1/2 py-3 text-gray-600 bg-red-100 rounded-lg">
+					<p className="flex justify-center items-center w-full lg:w-1/2 px-3 py-3 text-gray-600 bg-red-100 rounded-lg">
 						<span className="font-bold mr-2">Error:</span>
 						{data.errors.join(", ")}
 					</p>
@@ -29,7 +29,7 @@ const HomePage = () => {
 		if (data.length === 0) {
 			setContent(
 				<div className="flex justify-center mt-6">
-					<p className="flex justify-center items-center w-1/2 py-3 text-gray-600 bg-green-100 rounded-lg">
+					<p className="flex justify-center items-center w-full lg:w-1/2 px-3 py-3 text-gray-600 bg-green-100 rounded-lg">
 						<span className="font-bold mr-2">
 							You have no recent set yet.
 						</span>
@@ -54,8 +54,8 @@ const HomePage = () => {
 	}
 
 	return (
-		<div className="w-2/3 mt-8 mx-auto">
-			<div className="flex justify-between items-center">
+		<div className="w-5/6 lg:w-2/3 mt-8 mx-auto">
+			<div className="block md:flex justify-between items-center">
 				<div>
 					<h1 className="text-2xl text-green-600 font-bold">
 						Welcome to Plearncard!
@@ -66,7 +66,7 @@ const HomePage = () => {
 					</p>
 				</div>
 				<Link href="/create">
-					<span className="flex justify-center items-center w-24 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
+					<span className="flex justify-center items-center px-4 h-10 mt-4 lg:mt-0 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
 						Create
 						<svg
 							className="w-5 h-5 ml-1"

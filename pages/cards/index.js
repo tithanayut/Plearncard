@@ -18,7 +18,7 @@ const CollectionPage = () => {
 		if (data.errors) {
 			setContent(
 				<div className="flex justify-center mt-6">
-					<p className="flex justify-center items-center w-1/2 py-3 text-gray-600 bg-red-100 rounded-lg">
+					<p className="flex justify-center items-center w-full lg:w-1/2 px-3 py-3 text-gray-600 bg-red-100 rounded-lg">
 						<span className="font-bold mr-2">Error:</span>
 						{data.errors.join(", ")}
 					</p>
@@ -31,18 +31,16 @@ const CollectionPage = () => {
 			settotalSet(0);
 			setContent(
 				<div className="flex justify-center mt-6">
-					<div className="flex flex-col justify-center items-center w-1/2 py-3 text-gray-600 bg-green-100 rounded-lg">
+					<div className="flex flex-col justify-center items-center text-center w-full lg:w-1/2 px-3 py-3 text-gray-600 bg-green-100 rounded-lg">
 						<p className="font-bold">Welcome to Plearncard!</p>
-						<div>
-							<p className="flex">
-								Your collection is empty. You may want to
-								<Link href="/create">
-									<span className="ml-1 text-green-600 font-bold cursor-pointer hover:text-green-500">
-										Create one
-									</span>
-								</Link>
-							</p>
-						</div>
+						<p>
+							Your collection is empty. You may want to
+							<Link href="/create">
+								<span className="ml-1 text-green-600 font-bold cursor-pointer hover:text-green-500">
+									Create one
+								</span>
+							</Link>
+						</p>
 					</div>
 				</div>
 			);
@@ -65,7 +63,7 @@ const CollectionPage = () => {
 	}
 
 	return (
-		<div className="w-2/3 mt-8 mx-auto">
+		<div className="w-5/6 lg:w-2/3 mt-8 mx-auto">
 			<div className="flex justify-between items-center">
 				<p className="text-gray-600">
 					{content && (
@@ -79,7 +77,7 @@ const CollectionPage = () => {
 					)}
 				</p>
 				<Link href="/create">
-					<span className="flex justify-center items-center w-24 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
+					<span className="flex justify-center items-center ml-4 px-4 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
 						Create
 						<svg
 							className="w-5 h-5 ml-1"
