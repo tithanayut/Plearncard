@@ -52,7 +52,7 @@ const CreatePage = () => {
 	};
 
 	return (
-		<div className="w-2/3 mt-8 mx-auto ">
+		<div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
 			<p className="text-2xl text-green-600 font-bold">Create new set</p>
 			<form className="mt-6 text-gray-600" onSubmit={createSetHandler}>
 				<div className="my-2">
@@ -60,7 +60,7 @@ const CreatePage = () => {
 						Topic
 					</label>
 					<input
-						className="w-96 h-8 mx-3 border-b-2 outline-none border-gray-400"
+						className="w-full lg:w-96 h-8 lg:mx-3 border-b-2 outline-none border-gray-400"
 						type="text"
 						id="topic"
 						ref={topicField}
@@ -71,7 +71,7 @@ const CreatePage = () => {
 						Description
 					</label>
 					<input
-						className="w-2/3 h-8 mx-3 border-b-2 outline-none border-gray-400"
+						className="w-full lg:w-2/3 h-8 lg:mx-3 border-b-2 outline-none border-gray-400"
 						type="text"
 						id="description"
 						ref={descriptionField}
@@ -84,7 +84,7 @@ const CreatePage = () => {
 				)}
 				<div className="mt-6">
 					<input
-						className="w-24 h-10 font-bold text-gray-600 bg-green-200 rounded-md cursor-pointer hover:bg-green-300 hover:shadow-sm"
+						className="w-full lg:w-auto px-4 h-10 font-bold text-gray-600 bg-green-200 rounded-md cursor-pointer hover:bg-green-300 hover:shadow-sm"
 						type="submit"
 						value="Create!"
 					/>

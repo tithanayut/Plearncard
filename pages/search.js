@@ -18,7 +18,7 @@ const SearchPage = () => {
 		if (data.errors) {
 			setContent(
 				<div className="flex justify-center mt-6">
-					<p className="flex justify-center items-center w-1/2 py-3 text-gray-600 bg-red-100 rounded-lg">
+					<p className="flex justify-center items-center w-full lg:w-1/2 px-3 py-3 text-gray-600 bg-red-100 rounded-lg">
 						<span className="font-bold mr-2">Error:</span>
 						{data.errors.join(", ")}
 					</p>
@@ -53,7 +53,7 @@ const SearchPage = () => {
 		if (data.length === 0) {
 			setContent(
 				<div className="flex justify-center mt-6">
-					<p className="flex justify-center items-center w-1/2 py-3 text-gray-600 bg-green-100 rounded-lg">
+					<p className="flex justify-center items-center w-full lg:w-1/2 px-3 py-3 text-gray-600 bg-green-100 rounded-lg">
 						<span className="font-bold mr-2">Not Found</span>
 					</p>
 				</div>
@@ -69,7 +69,7 @@ const SearchPage = () => {
 	};
 
 	return (
-		<div className="w-2/3 mt-8 mx-auto ">
+		<div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
 			<p className="text-2xl text-green-600 font-bold">Search</p>
 
 			<form
@@ -84,7 +84,7 @@ const SearchPage = () => {
 							Topic
 						</label>
 						<input
-							className="w-96 h-8 mx-3 border-b-2 outline-none border-gray-400"
+							className="w-full lg:w-96 h-8 lg:mx-3 border-b-2 outline-none border-gray-400"
 							type="text"
 							id="topic"
 							onChange={searchHandler}

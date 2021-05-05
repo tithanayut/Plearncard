@@ -60,16 +60,16 @@ const ProfilePage = () => {
 				<Profile username="" />
 			)}
 
-			<div className="w-2/3 mt-8 mx-auto text-gray-600">
+			<div className="w-5/6 lg:w-2/3 mt-8 mx-auto text-gray-600">
 				{joinedSince ? (
 					<Fragment>
-						<div className="flex justify-between items-center">
+						<div className="block sm:flex justify-between items-center">
 							<p>
 								Joined since {joinedSince ? joinedSince : "..."}
 							</p>
-							<div className="flex">
+							<div className="flex mt-4 sm:mt-0">
 								<Link href="/cards">
-									<span className="flex justify-center items-center w-40 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
+									<span className="flex justify-center items-center px-4 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
 										View Collection
 										<svg
 											className="w-5 h-5 ml-2"
@@ -88,7 +88,7 @@ const ProfilePage = () => {
 									</span>
 								</Link>
 								<Link href="/create">
-									<span className="flex justify-center items-center ml-2 w-24 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
+									<span className="flex justify-center items-center ml-2 px-4 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
 										Create
 										<svg
 											className="w-5 h-5 ml-1"

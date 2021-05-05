@@ -37,7 +37,7 @@ const ProfileDeletePage = () => {
 			) : (
 				<Profile username="" />
 			)}
-			<div className="w-2/3 mt-8 mx-auto text-gray-600">
+			<div className="w-5/6 lg:w-2/3 mt-8 mx-auto text-gray-600">
 				<div className="mt-4">
 					<h1 className="flex items-center text-2xl font-bold text-red-600">
 						<svg
@@ -58,7 +58,7 @@ const ProfileDeletePage = () => {
 					</h1>
 					{error && (
 						<div className="flex justify-center mt-6">
-							<p className="flex justify-center items-center w-full py-3 text-gray-600 bg-red-100 rounded-lg">
+							<p className="flex justify-center items-center w-full px-3 py-3 text-gray-600 bg-red-100 rounded-lg">
 								<span className="font-bold mr-2">
 									{error.join(", ")}
 								</span>
@@ -111,11 +111,10 @@ const ProfileDeletePage = () => {
 						</p>
 					</div>
 				</div>
-				<div
-					className="flex justify-center items-center w-72 h-10 mt-6 bg-red-200 text-red-600 font-bold rounded-lg cursor-pointer hover:bg-red-300 hover:shadow-sm"
-					onClick={deleteAccountHandler}
-				>
-					Confirm delete my account
+				<div className="flex" onClick={deleteAccountHandler}>
+					<p className="flex justify-center items-center w-full md:w-auto px-8 h-10 mt-6 bg-red-200 text-red-600 font-bold rounded-lg cursor-pointer hover:bg-red-300 hover:shadow-sm">
+						Confirm delete my account
+					</p>
 				</div>
 			</div>
 		</Fragment>
