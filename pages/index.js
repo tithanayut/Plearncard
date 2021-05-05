@@ -9,7 +9,7 @@ const IndexPage = () => {
 				<p className="text-2xl text-green-600 font-bold">
 					Welcome to Plearncard!
 				</p>
-				<p className="text-xl text-gray-600 mt-2 mb-14">
+				<p className="text-xl text-center text-gray-600 mx-4 mt-2 mb-14">
 					Plearncard is a web application that helps you learn
 					anything through flashcards.
 				</p>
@@ -17,7 +17,7 @@ const IndexPage = () => {
 			<div className="flex flex-col items-center text-green-600 mt-8">
 				<p className="text-xl font-bold">Are you ready?</p>
 				<Link href="/login">
-					<span className="flex justify-center items-center w-80 h-10 mt-4 font-bold bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
+					<span className="flex justify-center items-center px-4 h-10 mt-4 font-bold bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
 						Get Started with Plearncard
 						<svg
 							className="w-6 h-6 ml-1"
