@@ -3,7 +3,7 @@ const CardInput = (props) => {
 		<div className="flex my-2">
 			<input
 				type="text"
-				className="w-60 h-8 mx-3 border-b-2 outline-none border-gray-400"
+				className="w-full lg:w-60 h-8 mx-1 lg:mx-3 border-b-2 outline-none border-gray-400"
 				defaultValue={props.values.front}
 				onChange={(event) => {
 					props.change(props.id, { front: event.target.value });
@@ -11,14 +11,14 @@ const CardInput = (props) => {
 			/>
 			<input
 				type="text"
-				className="w-60 h-8 mx-3 border-b-2 outline-none border-gray-400"
+				className="w-full lg:w-60 h-8 mx-1 lg:mx-3 border-b-2 outline-none border-gray-400"
 				defaultValue={props.values.back}
 				onChange={(event) => {
 					props.change(props.id, { back: event.target.value });
 				}}
 			/>
 			<div
-				className="flex justify-center items-center ml-8 w-10 h-8 font-bold bg-red-200 text-gray-600 rounded-lg cursor-pointer hover:bg-red-300 hover:shadow-sm"
+				className="flex justify-center items-center ml-8 px-2 h-8 font-bold bg-red-200 text-gray-600 rounded-lg cursor-pointer hover:bg-red-300 hover:shadow-sm"
 				onClick={() => {
 					props.delete(props.id);
 				}}
