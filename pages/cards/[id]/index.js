@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
+import useEventListener from "@use-it/event-listener";
 
 const SetPage = () => {
 	const router = useRouter();
@@ -29,6 +30,24 @@ const SetPage = () => {
 
 	const [currentCard, setCurrentCard] = useState(0);
 	const [viewState, setViewState] = useState(false);
+
+	useEventListener("keydown", ({ keyCode }) => {
+		// Left Arrow
+		if (keyCode === 37) {
+			changeCardHandler("previous");
+			return;
+		}
+		// Right Arrow
+		if (keyCode === 39) {
+			changeCardHandler("next");
+			return;
+		}
+		// Spacebar
+		if (keyCode === 32) {
+			flipCardHandler();
+			return;
+		}
+	});
 
 	// Authentication
 	if (loading) return null;
@@ -264,6 +283,17 @@ const SetPage = () => {
 										/>
 									</svg>
 								</div>
+							</div>
+							<div className="mt-8 text-center text-gray-600 select-text">
+								<p>
+									Use arrow buttons to switch card. Click flip
+									to flip between side.
+									<br />
+									<span className="hidden lg:block">
+										Alternatively, on computer, use
+										left/right arrow key or spacebar.
+									</span>
+								</p>
 							</div>
 						</Fragment>
 					) : (
