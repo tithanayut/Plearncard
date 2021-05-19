@@ -289,7 +289,7 @@ const SetPage = () => {
 									Use arrow buttons to switch card. Click flip
 									to flip between side.
 									<br />
-									<span className="hidden lg:block">
+									<span className="hidden xl:block">
 										Alternatively, on computer, use
 										left/right arrow key or spacebar.
 									</span>
