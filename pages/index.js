@@ -10,8 +10,8 @@ const IndexPage = () => {
 					Welcome to Plearncard!
 				</p>
 				<p className="text-xl text-center text-gray-600 mx-4 mt-2 mb-14">
-					Plearncard is a web application that helps you learn
-					anything through flashcards.
+					Plearncard is a web application that helps you learn anything through
+					flashcards.
 				</p>
 			</div>
 			<div className="flex flex-col items-center text-green-600 mt-8">

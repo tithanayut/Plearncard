@@ -30,16 +30,13 @@ export default async (req, res) => {
 				.collection("users")
 				.findOne({ _id: ObjectId(userId) });
 		} catch {
-			return res
-				.status(500)
-				.json({ errors: ["Database connection failed"] });
+			return res.status(500).json({ errors: ["Database connection failed"] });
 		} finally {
 			await client.close();
 		}
 
 		return res.status(200).json(result);
 	} else if (req.method === "DELETE") {
-		let result;
 		const client = new MongoClient(uri);
 		try {
 			await client.connect();
@@ -54,14 +51,9 @@ export default async (req, res) => {
 				.collection("accounts")
 				.deleteOne({ userId: ObjectId(userId) });
 			// Delete cards
-			await client
-				.db("plearncard")
-				.collection("cards")
-				.deleteMany({ userId });
+			await client.db("plearncard").collection("cards").deleteMany({ userId });
 		} catch {
-			return res
-				.status(500)
-				.json({ errors: ["Database connection failed"] });
+			return res.status(500).json({ errors: ["Database connection failed"] });
 		} finally {
 			await client.close();
 		}

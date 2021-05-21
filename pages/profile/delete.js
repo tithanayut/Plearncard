@@ -7,10 +7,6 @@ import Profile from "../../components/Profile";
 const ProfileDeletePage = () => {
 	const router = useRouter();
 	const [session, loading] = useSession();
-	if (loading) return null;
-	if (!loading && !session) {
-		router.replace("/login");
-	}
 
 	const [error, setError] = useState(null);
 	const deleteAccountHandler = async () => {
@@ -29,6 +25,12 @@ const ProfileDeletePage = () => {
 			callbackUrl: "/",
 		});
 	};
+
+	// Authentication
+	if (loading) return null;
+	if (!loading && !session) {
+		router.replace("/login");
+	}
 
 	return (
 		<Fragment>
@@ -59,9 +61,7 @@ const ProfileDeletePage = () => {
 					{error && (
 						<div className="flex justify-center mt-6">
 							<p className="flex justify-center items-center w-full px-3 py-3 text-gray-600 bg-red-100 rounded-lg">
-								<span className="font-bold mr-2">
-									{error.join(", ")}
-								</span>
+								<span className="font-bold mr-2">{error.join(", ")}</span>
 							</p>
 						</div>
 					)}
@@ -72,42 +72,37 @@ const ProfileDeletePage = () => {
 						<p className="mt-1">
 							By clicking{" "}
 							<span className="text-red-600">
-								"Confirm delete my account"
+								&quot;Confirm delete my account&quot;
 							</span>{" "}
-							below, you acknowledge that the following actions
-							will be processed.
+							below, you acknowledge that the following actions will be
+							processed.
 						</p>
 						<ul className="list-disc list-inside mt-1">
 							<li>
-								All flashcards you created at Plearncard will be
-								deleted from Plearncard server.
-							</li>
-							<li>
-								Your user profile, including your name, email
-								and image (if exists), will be deleted from
+								All flashcards you created at Plearncard will be deleted from
 								Plearncard server.
 							</li>
 							<li>
-								Your account information, including your User
-								ID, OAuth profile, OAuth Access Token, and OAuth
-								Refresh Token (if exists) will be deleted from
-								Plearncard server. However, Plearncard will
-								continue to be listed as an authorized app on
-								your OAuth provider website. You can delete
-								Plearncard from the list at your OAuth provider
-								website if you would like.
+								Your user profile, including your name, email and image (if
+								exists), will be deleted from Plearncard server.
+							</li>
+							<li>
+								Your account information, including your User ID, OAuth profile,
+								OAuth Access Token, and OAuth Refresh Token (if exists) will be
+								deleted from Plearncard server. However, Plearncard will
+								continue to be listed as an authorized app on your OAuth
+								provider website. You can delete Plearncard from the list at
+								your OAuth provider website if you would like.
 							</li>
 						</ul>
 						<p className="font-bold mt-2">
-							Please note that this is a one-way operation. Once
-							your data have been deleted, it <u>cannot</u> be
-							recovered.
+							Please note that this is a one-way operation. Once your data have
+							been deleted, it <u>cannot</u> be recovered.
 						</p>
 						<p className="font-bold mt-2">
-							If you confirm to delete your account, please click
-							on the button below. You will be redirected to
-							Plearncard front page after the account deletion has
-							been complete.
+							If you confirm to delete your account, please click on the button
+							below. You will be redirected to Plearncard front page after the
+							account deletion has been complete.
 						</p>
 					</div>
 				</div>

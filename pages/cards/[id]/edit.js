@@ -63,7 +63,7 @@ const EditSetPage = () => {
 		setCards(newCards);
 	};
 
-	const addCardHandler = (id, values) => {
+	const addCardHandler = () => {
 		const newCards = cards.slice();
 		newCards.push({ id: cuid(), front: "", back: "" });
 		setCards(newCards);

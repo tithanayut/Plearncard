@@ -30,9 +30,7 @@ const HomePage = () => {
 			setContent(
 				<div className="flex justify-center mt-6">
 					<p className="flex justify-center items-center w-full lg:w-1/2 px-3 py-3 text-gray-600 bg-green-100 rounded-lg">
-						<span className="font-bold mr-2">
-							You have no recent set yet.
-						</span>
+						<span className="font-bold mr-2">You have no recent set yet.</span>
 					</p>
 				</div>
 			);
@@ -61,8 +59,7 @@ const HomePage = () => {
 						Welcome to Plearncard!
 					</h1>
 					<p className="text-gray-600 mt-2">
-						Below is your recent sets. Or click create to build new
-						one.
+						Below is your recent sets. Or click create to build new one.
 					</p>
 				</div>
 				<Link href="/create">

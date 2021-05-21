@@ -24,9 +24,7 @@ const Set = (props) => {
 				<div>
 					<p className="text-lg font-bold">{props.name}</p>
 					<p>
-						{props.total > 1
-							? props.total + " cards"
-							: props.total + " card"}
+						{props.total > 1 ? props.total + " cards" : props.total + " card"}
 					</p>
 				</div>
 				<div className="text-sm mt-4">

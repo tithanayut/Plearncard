@@ -152,8 +152,7 @@ const SetPage = () => {
 						<Fragment>
 							<div className="mt-4 text-lg text-center text-gray-600 font-bold">
 								<p>
-									Card {currentCard + 1} of{" "}
-									{data ? data.cards.length : "..."}
+									Card {currentCard + 1} of {data ? data.cards.length : "..."}
 								</p>
 							</div>
 							<div className="flex justify-around items-center">
@@ -185,9 +184,7 @@ const SetPage = () => {
 									<div
 										className={[
 											"flex justify-center items-center w-96 mt-4 rounded-xl",
-											!viewState
-												? "bg-green-100"
-												: "bg-yellow-100",
+											!viewState ? "bg-green-100" : "bg-yellow-100",
 										].join(" ")}
 										style={{ minHeight: "300px" }}
 									>
@@ -286,12 +283,12 @@ const SetPage = () => {
 							</div>
 							<div className="mt-8 text-center text-gray-600 select-text">
 								<p>
-									Use arrow buttons to switch card. Click flip
-									to flip between side.
+									Use arrow buttons to switch card. Click flip to flip between
+									side.
 									<br />
 									<span className="hidden xl:block">
-										Alternatively, on computer, use
-										left/right arrow key or spacebar.
+										Alternatively, on computer, use left/right arrow key or
+										spacebar.
 									</span>
 								</p>
 							</div>

@@ -18,11 +18,8 @@ const LoginPage = () => {
 			</div>
 			<div className="flex justify-center text-center mt-6">
 				<p className="leading-7">
-					<span className="mr-2 text-green-600 font-bold">
-						Hello!
-					</span>
-					We use OAuth for authentication and authorization here.{" "}
-					<br />
+					<span className="mr-2 text-green-600 font-bold">Hello!</span>
+					We use OAuth for authentication and authorization here. <br />
 					Click on the button below to choose your favourite provider.
 				</p>
 			</div>

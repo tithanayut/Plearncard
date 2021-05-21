@@ -68,10 +68,7 @@ const CollectionPage = () => {
 				<p className="text-gray-600">
 					{content && (
 						<span>
-							You have{" "}
-							{totalSet > 1
-								? totalSet + " sets"
-								: totalSet + " set"}{" "}
+							You have {totalSet > 1 ? totalSet + " sets" : totalSet + " set"}{" "}
 							of cards in your collection.
 						</span>
 					)}

@@ -1,4 +1,4 @@
-import { MongoClient, ObjectId } from "mongodb";
+import { MongoClient } from "mongodb";
 import jwt from "next-auth/jwt";
 
 const uri = process.env.MONGODB_URI;
@@ -22,9 +22,7 @@ export default async (req, res) => {
 
 	if (req.method === "GET") {
 		if (!req.query.id) {
-			return res
-				.status(400)
-				.json({ errors: ["Request body not complete"] });
+			return res.status(400).json({ errors: ["Request body not complete"] });
 		}
 
 		const slug = req.query.id;
@@ -45,9 +43,7 @@ export default async (req, res) => {
 					}
 				);
 		} catch {
-			return res
-				.status(500)
-				.json({ errors: ["Database connection failed"] });
+			return res.status(500).json({ errors: ["Database connection failed"] });
 		} finally {
 			await client.close();
 		}
@@ -89,9 +85,7 @@ export default async (req, res) => {
 					}
 				);
 		} catch {
-			return res
-				.status(500)
-				.json({ errors: ["Database connection failed"] });
+			return res.status(500).json({ errors: ["Database connection failed"] });
 		} finally {
 			await client.close();
 		}
@@ -99,9 +93,7 @@ export default async (req, res) => {
 		return res.status(200).json(result.value);
 	} else if (req.method === "DELETE") {
 		if (!req.query.id) {
-			return res
-				.status(400)
-				.json({ errors: ["Request body not complete"] });
+			return res.status(400).json({ errors: ["Request body not complete"] });
 		}
 
 		const slug = req.query.id;
@@ -114,9 +106,7 @@ export default async (req, res) => {
 				.collection("cards")
 				.deleteOne({ userId, slug });
 		} catch {
-			return res
-				.status(500)
-				.json({ errors: ["Database connection failed"] });
+			return res.status(500).json({ errors: ["Database connection failed"] });
 		} finally {
 			await client.close();
 		}
