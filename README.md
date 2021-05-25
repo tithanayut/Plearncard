@@ -1,11 +1,11 @@
 # Plearncard
 
 **Plearncard** is a web application that helps you learn anything through online flashcards.
-It is an application that allows you to create and learn with your own sets of customizable flashcards online.
+It is an application that allows you to create and learn with your own sets of customizable flashcards anytime and anywhere.
 
 **Live Demo:** [https://plearncard.vercel.app/](https://plearncard.vercel.app/)
 
-Plearncard was built by using [https://nextjs.org/](Next.js) and MongoDB. It is a single-page application with OAuth authentication and API support.
+Plearncard was built by using [Next.js](https://nextjs.org/) and MongoDB. It is a single-page application with OAuth authentication and API support.
 
 ## Usage
 
