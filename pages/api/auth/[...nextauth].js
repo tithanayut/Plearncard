@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
 
@@ -27,6 +28,28 @@ export default NextAuth({
 		Providers.WordPress({
 			clientId: process.env.WORDPRESS_CLIENT_ID,
 			clientSecret: process.env.WORDPRESS_CLIENT_SECRET,
+		}),
+		Providers.Credentials({
+			name: "Test User",
+			credentials: {},
+			async authorize() {
+				const client = new MongoClient(uri);
+				let user;
+				try {
+					await client.connect();
+					user = await client.db("plearncard").collection("users").insertOne({
+						name: "Test User",
+						createdAt: new Date(),
+						updatedAt: new Date(),
+					});
+				} catch (err) {
+					throw new Error("Database connection failed");
+				} finally {
+					await client.close();
+				}
+				console.log(user.ops._id);
+				return { id: user.insertedId, name: "Test User" };
+			},
 		}),
 	],
 });
