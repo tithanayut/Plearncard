@@ -37,9 +37,10 @@ const CollectionPage = () => {
 							Your collection is empty. You may want to
 							<Link href="/create">
 								<span className="ml-1 text-green-600 font-bold cursor-pointer hover:text-green-500">
-									Create one
+									create one
 								</span>
 							</Link>
+							.
 						</p>
 					</div>
 				</div>

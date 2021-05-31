@@ -283,12 +283,12 @@ const SetPage = () => {
 							</div>
 							<div className="mt-8 text-center text-gray-600 select-text">
 								<p>
-									Use arrow buttons to switch card. Click flip to flip between
-									side.
+									Use arrow buttons to switch cards. Click flip to flip between
+									sides.
 									<br />
 									<span className="hidden xl:block">
-										Alternatively, on computer, use left/right arrow key or
-										spacebar.
+										Alternatively, on a computer, use the left/right arrow key
+										or spacebar.
 									</span>
 								</p>
 							</div>
