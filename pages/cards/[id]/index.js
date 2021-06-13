@@ -156,18 +156,16 @@ const SetPage = () => {
 								</p>
 							</div>
 							<div className="flex justify-around items-center">
-								<div
-									className="hidden md:flex justify-end w-1/4 cursor-pointer"
-									onClick={() => {
-										changeCardHandler("previous");
-									}}
-								>
+								<div className="hidden md:flex justify-end w-1/4">
 									<svg
-										className="w-6 h-6 mr-4"
+										className="w-9 h-9 mr-4 cursor-pointer"
 										fill="none"
 										stroke="currentColor"
 										viewBox="0 0 24 24"
 										xmlns="http://www.w3.org/2000/svg"
+										onClick={() => {
+											changeCardHandler("previous");
+										}}
 									>
 										<path
 											strokeLinecap="round"
@@ -195,18 +193,16 @@ const SetPage = () => {
 										</p>
 									</div>
 								</div>
-								<div
-									className="hidden md:flex justify-start w-1/4 cursor-pointer"
-									onClick={() => {
-										changeCardHandler("next");
-									}}
-								>
+								<div className="hidden md:flex justify-start w-1/4">
 									<svg
-										className="w-6 h-6 ml-4"
+										className="w-9 h-9 ml-4 cursor-pointer"
 										fill="none"
 										stroke="currentColor"
 										viewBox="0 0 24 24"
 										xmlns="http://www.w3.org/2000/svg"
+										onClick={() => {
+											changeCardHandler("next");
+										}}
 									>
 										<path
 											strokeLinecap="round"
