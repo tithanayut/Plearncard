@@ -102,7 +102,7 @@ const ProfileDeletePage = () => {
 						<p className="font-bold mt-2">
 							If you confirm to delete your account, please click on the button
 							below. You will be redirected to Plearncard front page after the
-							account deletion has been complete.
+							account deletion has been completed.
 						</p>
 					</div>
 				</div>
