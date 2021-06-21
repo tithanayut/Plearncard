@@ -140,7 +140,7 @@ const EditSetPage = () => {
 							Back
 						</span>
 					</Link>
-					{!message && (
+					{!message && !loading && (
 						<div
 							className="flex items-center text-red-600 cursor-pointer"
 							onClick={deleteSetHandler}
