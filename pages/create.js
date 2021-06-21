@@ -30,7 +30,7 @@ const CreatePage = () => {
 			return;
 		}
 
-		const res = await fetch("/api/cards", {
+		const res = await fetch("/api/sets", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -48,7 +48,7 @@ const CreatePage = () => {
 			return;
 		}
 
-		router.push("/cards");
+		router.push("/sets");
 	};
 
 	return (

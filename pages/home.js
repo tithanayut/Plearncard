@@ -11,7 +11,7 @@ const HomePage = () => {
 
 	const [content, setContent] = useState(null);
 	const loadRecentSets = useCallback(async () => {
-		const res = await fetch("/api/cards?recent=6");
+		const res = await fetch("/api/sets?recent=6");
 		const data = await res.json();
 
 		if (data.errors) {

@@ -12,7 +12,7 @@ const SearchPage = () => {
 	const [totalSet, settotalSet] = useState(0);
 	const [content, setContent] = useState(null);
 	const loadSets = useCallback(async () => {
-		const res = await fetch("/api/cards");
+		const res = await fetch("/api/sets");
 		const data = await res.json();
 
 		if (data.errors) {

@@ -23,7 +23,7 @@ const EditSetPage = () => {
 			return null;
 		}
 
-		const res = await fetch("/api/cards/" + id);
+		const res = await fetch("/api/sets/" + id);
 		const data = await res.json();
 
 		if (data.errors) {
@@ -77,7 +77,7 @@ const EditSetPage = () => {
 	const deleteSetHandler = async () => {
 		setLoading(true);
 
-		const res = await fetch("/api/cards/" + id, {
+		const res = await fetch("/api/sets/" + id, {
 			method: "DELETE",
 		});
 		const data = await res.json();
@@ -88,7 +88,7 @@ const EditSetPage = () => {
 			return;
 		}
 
-		router.replace("/cards");
+		router.replace("/sets");
 	};
 
 	const saveToDBHandler = async () => {
@@ -101,7 +101,7 @@ const EditSetPage = () => {
 			cards,
 		};
 
-		const res = await fetch("/api/cards/" + id, {
+		const res = await fetch("/api/sets/" + id, {
 			method: "PUT",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(body),
@@ -114,14 +114,14 @@ const EditSetPage = () => {
 			return;
 		}
 
-		router.push("/cards/" + id);
+		router.push("/sets/" + id);
 	};
 
 	return (
 		<Fragment>
 			<div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
 				<div className="flex justify-between">
-					<Link href={"/cards/" + id}>
+					<Link href={"/sets/" + id}>
 						<span className="flex items-center text-gray-600 cursor-pointer">
 							<svg
 								className="w-4 h-4 mr-1"
