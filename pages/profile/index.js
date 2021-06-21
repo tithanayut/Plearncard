@@ -62,7 +62,7 @@ const ProfilePage = () => {
 						<div className="block sm:flex justify-between items-center">
 							<p>Joined since {joinedSince ? joinedSince : "..."}</p>
 							<div className="flex mt-4 sm:mt-0">
-								<Link href="/cards">
+								<Link href="/sets">
 									<span className="flex justify-center items-center px-4 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
 										View Collection
 										<svg

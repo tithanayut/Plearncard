@@ -34,7 +34,7 @@ const NavBar = () => {
 							</Link>
 						</li>
 						<li className="mx-2 md:mx-3 cursor-pointer">
-							<Link href="/cards">
+							<Link href="/sets">
 								<span>
 									<svg
 										className="w-5 h-5 md:hidden"

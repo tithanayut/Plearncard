@@ -12,7 +12,7 @@ const CollectionPage = () => {
 	const [content, setContent] = useState(null);
 	const [totalSet, settotalSet] = useState("#");
 	const loadSets = useCallback(async () => {
-		const res = await fetch("/api/cards");
+		const res = await fetch("/api/sets");
 		const data = await res.json();
 
 		if (data.errors) {

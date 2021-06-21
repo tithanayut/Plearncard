@@ -16,7 +16,7 @@ const SetPage = () => {
 			return null;
 		}
 
-		const res = await fetch("/api/cards/" + id);
+		const res = await fetch("/api/sets/" + id);
 		const data = await res.json();
 
 		if (data.errors) {
@@ -83,7 +83,7 @@ const SetPage = () => {
 		<Fragment>
 			<div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
 				<div className="flex justify-between">
-					<Link href="/cards">
+					<Link href="/sets">
 						<span className="flex items-center text-gray-600 cursor-pointer">
 							<svg
 								className="w-4 h-4 mr-1"
@@ -102,7 +102,7 @@ const SetPage = () => {
 							Back to Collection
 						</span>
 					</Link>
-					<Link href={"/cards/" + id + "/edit"}>
+					<Link href={"/sets/" + id + "/edit"}>
 						<span className="flex items-center text-green-600 cursor-pointer">
 							Edit
 							<svg
