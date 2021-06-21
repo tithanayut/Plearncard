@@ -24,7 +24,7 @@ const CreatePage = () => {
 		}
 		setSubmitting(true);
 
-		if (!topicField.current.value || !descriptionField.current.value) {
+		if (!topicField.current.value) {
 			setSubmitting(false);
 			setMessage("Please complete all fields");
 			return;

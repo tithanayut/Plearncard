@@ -57,7 +57,6 @@ export default async (req, res) => {
 		if (
 			!req.body.id ||
 			!req.body.topic ||
-			!req.body.description ||
 			typeof req.body.total !== "number" ||
 			typeof req.body.cards !== "object"
 		) {
@@ -78,7 +77,7 @@ export default async (req, res) => {
 					{
 						$set: {
 							name: req.body.topic,
-							description: req.body.description,
+							description: req.body.description || "",
 							total: req.body.total,
 							cards: req.body.cards,
 						},

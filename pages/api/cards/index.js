@@ -64,12 +64,12 @@ export default async (req, res) => {
 
 		return res.status(200).json(result);
 	} else if (req.method === "POST") {
-		if (!req.body.topic || !req.body.description) {
+		if (!req.body.topic) {
 			return res.status(400).json({ errors: ["Request body not complete"] });
 		}
 
 		const topic = req.body.topic.trim();
-		const description = req.body.description.trim();
+		const description = req.body.description.trim() || "";
 
 		let result;
 		const client = new MongoClient(uri);
