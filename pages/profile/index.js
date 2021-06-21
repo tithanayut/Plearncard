@@ -64,7 +64,7 @@ const ProfilePage = () => {
 							<div className="flex mt-4 sm:mt-0">
 								<Link href="/sets">
 									<span className="flex justify-center items-center px-4 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
-										View Collection
+										View My Sets
 										<svg
 											className="w-5 h-5 ml-2"
 											fill="none"

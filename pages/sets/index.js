@@ -34,7 +34,7 @@ const CollectionPage = () => {
 					<div className="flex flex-col justify-center items-center text-center w-full lg:w-1/2 px-3 py-3 text-gray-600 bg-green-100 rounded-lg">
 						<p className="font-bold">Welcome to Plearncard!</p>
 						<p>
-							Your collection is empty. You may want to
+							You don't have any set yet. You may want to
 							<Link href="/create">
 								<span className="ml-1 text-green-600 font-bold cursor-pointer hover:text-green-500">
 									create one
@@ -69,8 +69,8 @@ const CollectionPage = () => {
 				<p className="text-gray-600">
 					{content && (
 						<span>
-							You have {totalSet > 1 ? totalSet + " sets" : totalSet + " set"}{" "}
-							of cards in your collection.
+							You have a total of{" "}
+							{totalSet > 1 ? totalSet + " sets" : totalSet + " set"}.
 						</span>
 					)}
 				</p>

@@ -99,7 +99,7 @@ const SetPage = () => {
 									d="M15 19l-7-7 7-7"
 								/>
 							</svg>
-							Back to Collection
+							Back to My Sets
 						</span>
 					</Link>
 					<Link href={"/sets/" + id + "/edit"}>
