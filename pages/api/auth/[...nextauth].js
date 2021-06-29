@@ -25,10 +25,6 @@ export default NextAuth({
             clientId: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
         }),
-        Providers.WordPress({
-            clientId: process.env.WORDPRESS_CLIENT_ID,
-            clientSecret: process.env.WORDPRESS_CLIENT_SECRET,
-        }),
         Providers.Credentials({
             name: "Test User",
             credentials: {},
