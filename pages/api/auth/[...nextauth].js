@@ -50,7 +50,6 @@ export default NextAuth({
                 } finally {
                     await client.close();
                 }
-                console.log(user.ops._id);
                 return { id: user.insertedId, name: "Test User" };
             },
         }),
