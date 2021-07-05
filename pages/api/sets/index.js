@@ -1,6 +1,5 @@
 import { MongoClient } from "mongodb";
 import jwt from "next-auth/jwt";
-import cuid from "cuid";
 
 const uri = process.env.MONGODB_URI;
 const secret = process.env.SECRET;
