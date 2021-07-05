@@ -6,8 +6,8 @@ const Sets = (props) => {
             {props.sets.map((set) => {
                 return (
                     <Set
-                        key={set.slug}
-                        slug={set.slug}
+                        key={set._id}
+                        _id={set._id}
                         name={set.name}
                         total={set.total}
                         createdAt={set.createdAt}

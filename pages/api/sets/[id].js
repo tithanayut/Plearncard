@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import jwt from "next-auth/jwt";
 
 const uri = process.env.MONGODB_URI;
@@ -27,7 +27,7 @@ export default async (req, res) => {
                 .json({ errors: ["Request body not complete"] });
         }
 
-        const slug = req.query.id;
+        const _id = req.query.id;
 
         let result;
         const client = new MongoClient(uri);
@@ -37,7 +37,7 @@ export default async (req, res) => {
                 .db("plearncard")
                 .collection("cards")
                 .findOneAndUpdate(
-                    { userId, slug },
+                    { userId, _id: ObjectId(_id) },
                     {
                         $set: {
                             lastViewedAt: new Date(),
@@ -69,6 +69,8 @@ export default async (req, res) => {
             });
         }
 
+        const _id = req.query.id;
+
         let result;
         const client = new MongoClient(uri);
         try {
@@ -77,7 +79,7 @@ export default async (req, res) => {
                 .db("plearncard")
                 .collection("cards")
                 .findOneAndUpdate(
-                    { userId, slug: req.body.id },
+                    { userId, _id: ObjectId(_id) },
                     {
                         $set: {
                             name: req.body.topic,
@@ -103,7 +105,7 @@ export default async (req, res) => {
                 .json({ errors: ["Request body not complete"] });
         }
 
-        const slug = req.query.id;
+        const _id = req.query.id;
 
         const client = new MongoClient(uri);
         try {
@@ -111,7 +113,7 @@ export default async (req, res) => {
             await client
                 .db("plearncard")
                 .collection("cards")
-                .deleteOne({ userId, slug });
+                .deleteOne({ userId, _id: ObjectId(_id) });
         } catch {
             return res
                 .status(500)

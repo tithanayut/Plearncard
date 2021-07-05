@@ -46,8 +46,7 @@ export default async (req, res) => {
                 .collection("cards")
                 .find(searchQuery, {
                     projection: {
-                        _id: 0,
-                        slug: 1,
+                        _id: 1,
                         name: 1,
                         total: 1,
                         createdAt: 1,
@@ -78,15 +77,12 @@ export default async (req, res) => {
         let result;
         const client = new MongoClient(uri);
         try {
-            const slug = cuid();
-
             await client.connect();
             result = await client
                 .db("plearncard")
                 .collection("cards")
                 .insertOne({
                     userId,
-                    slug,
                     name: topic,
                     description,
                     total: 0,
