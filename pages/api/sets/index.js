@@ -22,16 +22,9 @@ export default async (req, res) => {
     const userId = token.sub;
 
     if (req.method === "GET") {
-        let searchQuery = { userId };
         let sort = {};
         let limit = 0;
 
-        if (typeof req.query.q !== "undefined") {
-            searchQuery = {
-                userId,
-                name: { $regex: req.query.q, $options: "i" },
-            };
-        }
         if (typeof req.query.recent !== "undefined") {
             sort = { lastViewedAt: -1 };
             limit = parseInt(req.query.recent);
@@ -44,14 +37,17 @@ export default async (req, res) => {
             result = await client
                 .db("plearncard")
                 .collection("cards")
-                .find(searchQuery, {
-                    projection: {
-                        _id: 1,
-                        name: 1,
-                        total: 1,
-                        createdAt: 1,
-                    },
-                })
+                .find(
+                    { userId },
+                    {
+                        projection: {
+                            _id: 1,
+                            name: 1,
+                            total: 1,
+                            createdAt: 1,
+                        },
+                    }
+                )
                 .sort(sort)
                 .limit(limit)
                 .toArray();
