@@ -19,6 +19,7 @@ export default async (req, res) => {
     }
 
     const userId = token.sub;
+    const setId = req.query.id;
 
     if (req.method === "GET") {
         if (!req.query.id) {
@@ -26,8 +27,6 @@ export default async (req, res) => {
                 .status(400)
                 .json({ errors: ["Request body not complete"] });
         }
-
-        const _id = req.query.id;
 
         let result;
         const client = new MongoClient(uri);
@@ -37,7 +36,7 @@ export default async (req, res) => {
                 .db("plearncard")
                 .collection("cards")
                 .findOneAndUpdate(
-                    { userId, _id: ObjectId(_id) },
+                    { userId, _id: ObjectId(setId) },
                     {
                         $set: {
                             lastViewedAt: new Date(),
@@ -69,8 +68,6 @@ export default async (req, res) => {
             });
         }
 
-        const _id = req.query.id;
-
         let result;
         const client = new MongoClient(uri);
         try {
@@ -79,7 +76,7 @@ export default async (req, res) => {
                 .db("plearncard")
                 .collection("cards")
                 .findOneAndUpdate(
-                    { userId, _id: ObjectId(_id) },
+                    { userId, _id: ObjectId(setId) },
                     {
                         $set: {
                             name: req.body.topic,
@@ -105,15 +102,13 @@ export default async (req, res) => {
                 .json({ errors: ["Request body not complete"] });
         }
 
-        const _id = req.query.id;
-
         const client = new MongoClient(uri);
         try {
             await client.connect();
             await client
                 .db("plearncard")
                 .collection("cards")
-                .deleteOne({ userId, _id: ObjectId(_id) });
+                .deleteOne({ userId, _id: ObjectId(setId) });
         } catch {
             return res
                 .status(500)
