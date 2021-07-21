@@ -23,10 +23,15 @@ export default async (req, res) => {
     if (req.method === "GET") {
         let sort = {};
         let limit = 0;
+        let conditions = { userId };
 
         if (typeof req.query.recent !== "undefined") {
             sort = { lastViewedAt: -1 };
             limit = parseInt(req.query.recent);
+        }
+
+        if (typeof req.query.favourite !== "undefined") {
+            conditions.isFavourite = true;
         }
 
         let result;
@@ -36,18 +41,15 @@ export default async (req, res) => {
             result = await client
                 .db("plearncard")
                 .collection("cards")
-                .find(
-                    { userId },
-                    {
-                        projection: {
-                            _id: 1,
-                            name: 1,
-                            total: 1,
-                            isFavourite: 1,
-                            createdAt: 1,
-                        },
-                    }
-                )
+                .find(conditions, {
+                    projection: {
+                        _id: 1,
+                        name: 1,
+                        total: 1,
+                        isFavourite: 1,
+                        createdAt: 1,
+                    },
+                })
                 .sort(sort)
                 .limit(limit)
                 .toArray();
