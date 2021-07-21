@@ -11,6 +11,7 @@ const Sets = (props) => {
                         name={set.name}
                         total={set.total}
                         createdAt={set.createdAt}
+                        isFavourite={set.isFavourite}
                     />
                 );
             })}

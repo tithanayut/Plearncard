@@ -43,6 +43,7 @@ export default async (req, res) => {
                             _id: 1,
                             name: 1,
                             total: 1,
+                            isFavourite: 1,
                             createdAt: 1,
                         },
                     }
