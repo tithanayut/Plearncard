@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
 
 import Profile from "../../components/Profile";
+import PlusIcon from "../../components/icons/PlusIcon";
 
 const MONTH = [
     "January",
@@ -90,20 +91,7 @@ const ProfilePage = () => {
                                 <Link href="/create">
                                     <span className="flex justify-center items-center ml-2 px-4 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
                                         Create
-                                        <svg
-                                            className="w-5 h-5 ml-1"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                                            ></path>
-                                        </svg>
+                                        <PlusIcon />
                                     </span>
                                 </Link>
                             </div>
