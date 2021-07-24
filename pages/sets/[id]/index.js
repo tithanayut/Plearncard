@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, Fragment } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
@@ -96,7 +96,7 @@ const SetPage = () => {
     };
 
     return (
-        <Fragment>
+        <>
             <div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
                 <div className="flex justify-between">
                     <Link href="/sets">
@@ -209,7 +209,7 @@ const SetPage = () => {
 
                 {data &&
                     (data.cards.length > 0 ? (
-                        <Fragment>
+                        <>
                             <div className="mt-4 text-lg text-center text-gray-600 font-bold">
                                 <p>
                                     Card {currentCard + 1} of{" "}
@@ -351,7 +351,7 @@ const SetPage = () => {
                                     </span>
                                 </p>
                             </div>
-                        </Fragment>
+                        </>
                     ) : (
                         <div className="flex justify-center mt-6 select-text">
                             <p className="flex justify-center items-center w-full lg:w-1/2 px-3 py-3 text-red-600 bg-gray-100 rounded-lg">
@@ -362,7 +362,7 @@ const SetPage = () => {
                         </div>
                     ))}
             </div>
-        </Fragment>
+        </>
     );
 };
 

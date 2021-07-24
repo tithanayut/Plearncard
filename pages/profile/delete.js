@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/client";
 
@@ -33,7 +33,7 @@ const ProfileDeletePage = () => {
     }
 
     return (
-        <Fragment>
+        <>
             {session ? (
                 <Profile username={session.user.name} />
             ) : (
@@ -119,7 +119,7 @@ const ProfileDeletePage = () => {
                     </p>
                 </div>
             </div>
-        </Fragment>
+        </>
     );
 };
 

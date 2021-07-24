@@ -1,9 +1,8 @@
-import { Fragment } from "react";
 import Link from "next/link";
 
 const IndexPage = () => {
     return (
-        <Fragment>
+        <>
             <div className="flex flex-col justify-center items-center bg-gray-100">
                 <img className="h-24 w-24 mt-14" src="/favicon.svg" />
                 <p className="text-2xl text-green-600 font-bold">
@@ -36,7 +35,7 @@ const IndexPage = () => {
                     </span>
                 </Link>
             </div>
-        </Fragment>
+        </>
     );
 };
 

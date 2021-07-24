@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef, Fragment } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
@@ -118,7 +118,7 @@ const EditSetPage = () => {
     };
 
     return (
-        <Fragment>
+        <>
             <div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
                 <div className="flex justify-between">
                     <Link href={"/sets/" + id}>
@@ -262,7 +262,7 @@ const EditSetPage = () => {
                     </div>
                 </div>
             )}
-        </Fragment>
+        </>
     );
 };
 

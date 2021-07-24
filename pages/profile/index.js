@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, Fragment } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
@@ -54,7 +54,7 @@ const ProfilePage = () => {
     }
 
     return (
-        <Fragment>
+        <>
             {session ? (
                 <Profile username={session.user.name} />
             ) : (
@@ -63,7 +63,7 @@ const ProfilePage = () => {
 
             <div className="w-5/6 lg:w-2/3 mt-8 mx-auto text-gray-600">
                 {joinedSince ? (
-                    <Fragment>
+                    <>
                         <div className="block sm:flex justify-between items-center">
                             <p>
                                 Joined since {joinedSince ? joinedSince : "..."}
@@ -124,12 +124,12 @@ const ProfilePage = () => {
                                 </li>
                             </ul>
                         </div>
-                    </Fragment>
+                    </>
                 ) : (
                     <div className="loader">Loading...</div>
                 )}
             </div>
-        </Fragment>
+        </>
     );
 };
 
