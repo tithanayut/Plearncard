@@ -10,7 +10,7 @@ const ProfileDeletePage = () => {
 
     const [error, setError] = useState(null);
     const deleteAccountHandler = async () => {
-        const res = await fetch("/api/users/me", {
+        const res = await fetch("/api/me", {
             method: "DELETE",
         });
         const data = await res.json();

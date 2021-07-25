@@ -27,7 +27,7 @@ const ProfilePage = () => {
 
     const [joinedSince, setjoinedSince] = useState(null);
     const loadProfile = useCallback(async () => {
-        const res = await fetch("/api/users/me");
+        const res = await fetch("/api/me");
         const data = await res.json();
 
         if (data.errors) {
