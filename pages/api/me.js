@@ -1,31 +1,21 @@
 import { MongoClient, ObjectId } from "mongodb";
-import jwt from "next-auth/jwt";
+import extractAuthJWT from "../../utils/extractAuthJWT";
 
 const uri = process.env.MONGODB_URI;
-const secret = process.env.SECRET;
 
 export default async (req, res) => {
-    // Authorization
-    let token;
-    try {
-        token = await jwt.getToken({ req, secret });
-    } catch {
-        return res
-            .status(401)
-            .json({ errors: ["Token verification failed", "Unauthorized"] });
-    }
+    const token = await extractAuthJWT(req);
     if (!token) {
         return res.status(401).json({ errors: ["Unauthorized"] });
     }
 
     const userId = token.sub;
-
+    const client = new MongoClient(uri);
     if (req.method === "GET") {
-        let result;
-        const client = new MongoClient(uri);
+        let user;
         try {
             await client.connect();
-            result = await client
+            user = await client
                 .db("plearncard")
                 .collection("users")
                 .findOne({ _id: ObjectId(userId) });
@@ -37,9 +27,8 @@ export default async (req, res) => {
             await client.close();
         }
 
-        return res.status(200).json(result);
+        return res.status(200).json(user);
     } else if (req.method === "DELETE") {
-        const client = new MongoClient(uri);
         try {
             await client.connect();
             // Delete from users
@@ -52,7 +41,7 @@ export default async (req, res) => {
                 .db("plearncard")
                 .collection("accounts")
                 .deleteOne({ userId: ObjectId(userId) });
-            // Delete cards
+            // Delete from cards
             await client
                 .db("plearncard")
                 .collection("cards")
