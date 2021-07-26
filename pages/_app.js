@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Provider } from "next-auth/client";
+import NavBar from "../modules/layout/NavBar/NavBar";
 
-import Layout from "../components/Layout";
 import "../styles/globals.css";
 
 function App({ Component, pageProps }) {
@@ -11,10 +11,12 @@ function App({ Component, pageProps }) {
                 <title>Plearncard</title>
                 <link rel="icon" href="/favicon.svg" />
             </Head>
-
-            <Layout>
+            <header>
+                <NavBar />
+            </header>
+            <main>
                 <Component {...pageProps} />
-            </Layout>
+            </main>
         </Provider>
     );
 }
