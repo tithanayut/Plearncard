@@ -7,6 +7,7 @@ import NavLink from "./NavItem/NavLink";
 import SetsIcon from "../../icons/SetsIcon";
 import SearchIcon from "../../icons/SearchIcon";
 import NavButton from "./NavItem/NavButton";
+import LoginIcon from "../../icons/LoginIcon";
 
 const NavBar = () => {
     const [authSession, authLoading] = useSession();
@@ -42,11 +43,7 @@ const NavBar = () => {
             </>
         );
     } else {
-        rightNavItems = (
-            <li className="mr-4 cursor-pointer">
-                <Link href="/login">Login</Link>
-            </li>
-        );
+        rightNavItems = <NavLink href="/login" text="Login" icon={LoginIcon} />;
     }
 
     return (
