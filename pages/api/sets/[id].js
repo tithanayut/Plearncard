@@ -11,7 +11,7 @@ export default async (req, res) => {
         token = await jwt.getToken({ req, secret });
     } catch {
         return res
-            .status(401)
+            .status(400)
             .json({ errors: ["Token verification failed", "Unauthorized"] });
     }
     if (!token) {
