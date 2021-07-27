@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/client";
 import RequireAuth from "../../modules/helpers/RequireAuth";
 import Profile from "../../components/Profile";
+import LoadingSpinner from "../../modules/ui/LoadingSpinner/LoadingSpinner";
 import PlusIcon from "../../components/icons/PlusIcon";
 
 const MONTH = [
@@ -118,7 +119,7 @@ const ProfilePage = () => {
                         </div>
                     </>
                 ) : (
-                    <div className="loader">Loading...</div>
+                    <LoadingSpinner />
                 )}
             </div>
         </RequireAuth>

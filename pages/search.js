@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import RequireAuth from "../modules/helpers/RequireAuth";
 import Sets from "../components/Sets/Sets";
+import LoadingSpinner from "../modules/ui/LoadingSpinner/LoadingSpinner";
 
 const SearchPage = () => {
     const [initialSets, setinitialSets] = useState(null);
@@ -81,7 +82,7 @@ const SearchPage = () => {
                             ></input>
                         </div>
                     ) : (
-                        !content && <div className="loader">Loading...</div>
+                        !content && <LoadingSpinner />
                     )}
                 </form>
 

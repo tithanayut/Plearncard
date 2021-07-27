@@ -3,8 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import RequireAuth from "../../../modules/helpers/RequireAuth";
 import cuid from "cuid";
-
 import CardInputs from "../../../components/CardInputs/CardInputs";
+import LoadingSpinner from "../../../modules/ui/LoadingSpinner/LoadingSpinner";
 
 const EditSetPage = () => {
     const router = useRouter();
@@ -159,7 +159,7 @@ const EditSetPage = () => {
             </div>
 
             {loading && !message ? (
-                <div className="loader">Loading...</div>
+                <LoadingSpinner />
             ) : (
                 message && (
                     <div className="flex justify-center mt-6">

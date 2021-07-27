@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import RequireAuth from "../modules/helpers/RequireAuth";
+import LoadingSpinner from "../modules/ui/LoadingSpinner/LoadingSpinner";
 
 const CreatePage = () => {
     const [message, setMessage] = useState(null);
@@ -89,7 +90,7 @@ const CreatePage = () => {
                             value="Create!"
                         />
                     </div>
-                    {submitting && <div className="loader">Loading...</div>}
+                    {submitting && <LoadingSpinner />}
                 </form>
             </div>
         </RequireAuth>

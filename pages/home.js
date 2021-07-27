@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import RequireAuth from "../modules/helpers/RequireAuth";
 import Sets from "../components/Sets/Sets";
+import LoadingSpinner from "../modules/ui/LoadingSpinner/LoadingSpinner";
 import PlusIcon from "../components/icons/PlusIcon";
 
 const HomePage = () => {
@@ -65,11 +66,7 @@ const HomePage = () => {
                 </div>
                 <div className="mt-6">
                     <p className="text-gray-600 font-bold">Recent</p>
-                    {content ? (
-                        content
-                    ) : (
-                        <div className="loader">Loading...</div>
-                    )}
+                    {content ? content : <LoadingSpinner />}
                 </div>
             </div>
         </RequireAuth>

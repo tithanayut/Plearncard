@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import RequireAuth from "../../../modules/helpers/RequireAuth";
 import useEventListener from "@use-it/event-listener";
+import LoadingSpinner from "../../../modules/ui/LoadingSpinner/LoadingSpinner";
 
 const SetPage = () => {
     const router = useRouter();
@@ -188,7 +189,7 @@ const SetPage = () => {
                 </div>
 
                 {!data && !message ? (
-                    <div className="loader">Loading...</div>
+                    <LoadingSpinner />
                 ) : (
                     message && (
                         <div className="flex justify-center mt-6 select-text">
