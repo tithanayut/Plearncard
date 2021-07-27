@@ -1,14 +1,13 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/client";
+import RequireAuth from "../../../modules/helpers/RequireAuth";
 import cuid from "cuid";
 
 import CardInputs from "../../../components/CardInputs/CardInputs";
 
 const EditSetPage = () => {
     const router = useRouter();
-    const [session, authLoading] = useSession();
 
     const topicField = useRef();
     const descriptionField = useRef();
@@ -41,12 +40,6 @@ const EditSetPage = () => {
         setLoading(false);
     }, [setInitData, setMessage, id]);
     useEffect(loadSet, [loadSet]);
-
-    // Authentication
-    if (authLoading) return null;
-    if (!authLoading && !session) {
-        router.replace("/login");
-    }
 
     const cardChangeHandler = (id, values) => {
         const newCards = cards.slice();
@@ -118,7 +111,7 @@ const EditSetPage = () => {
     };
 
     return (
-        <>
+        <RequireAuth>
             <div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
                 <div className="flex justify-between">
                     <Link href={"/sets/" + id}>
@@ -262,7 +255,7 @@ const EditSetPage = () => {
                     </div>
                 </div>
             )}
-        </>
+        </RequireAuth>
     );
 };
 

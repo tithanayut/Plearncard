@@ -1,12 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/client";
+import RequireAuth from "../../../modules/helpers/RequireAuth";
 import useEventListener from "@use-it/event-listener";
 
 const SetPage = () => {
     const router = useRouter();
-    const [session, loading] = useSession();
 
     const id = router.query.id;
     const [data, setData] = useState(null);
@@ -49,12 +48,6 @@ const SetPage = () => {
         }
     });
 
-    // Authentication
-    if (loading) return null;
-    if (!loading && !session) {
-        router.replace("/login");
-    }
-
     const flipCardHandler = () => {
         setViewState((prevState) => !prevState);
     };
@@ -96,7 +89,7 @@ const SetPage = () => {
     };
 
     return (
-        <>
+        <RequireAuth>
             <div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
                 <div className="flex justify-between">
                     <Link href="/sets">
@@ -362,7 +355,7 @@ const SetPage = () => {
                         </div>
                     ))}
             </div>
-        </>
+        </RequireAuth>
     );
 };
 

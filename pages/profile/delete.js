@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/client";
-
+import RequireAuth from "../../modules/helpers/RequireAuth";
 import Profile from "../../components/Profile";
 
 const ProfileDeletePage = () => {
-    const router = useRouter();
-    const [session, loading] = useSession();
+    const [session] = useSession();
 
     const [error, setError] = useState(null);
     const deleteAccountHandler = async () => {
@@ -26,14 +24,8 @@ const ProfileDeletePage = () => {
         });
     };
 
-    // Authentication
-    if (loading) return null;
-    if (!loading && !session) {
-        router.replace("/login");
-    }
-
     return (
-        <>
+        <RequireAuth>
             {session ? (
                 <Profile username={session.user.name} />
             ) : (
@@ -119,7 +111,7 @@ const ProfileDeletePage = () => {
                     </p>
                 </div>
             </div>
-        </>
+        </RequireAuth>
     );
 };
 
