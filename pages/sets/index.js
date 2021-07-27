@@ -1,15 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useSession } from "next-auth/client";
+import RequireAuth from "../../modules/helpers/RequireAuth";
 
 import Sets from "../../components/Sets/Sets";
 import PlusIcon from "../../components/icons/PlusIcon";
 
 const CollectionPage = () => {
-    const router = useRouter();
-    const [session, loading] = useSession();
-
     const [content, setContent] = useState(null);
     const [totalSet, settotalSet] = useState("#");
     const loadSets = useCallback(async () => {
@@ -58,35 +54,31 @@ const CollectionPage = () => {
     }, [settotalSet, setContent]);
     useEffect(loadSets, [loadSets]);
 
-    // Authentication
-    if (loading) return null;
-    if (!loading && !session) {
-        router.replace("/login");
-    }
-
     return (
-        <div className="w-5/6 lg:w-2/3 mt-8 mx-auto">
-            <div className="flex justify-between items-center">
-                <p className="text-gray-600">
-                    {content && (
-                        <span>
-                            You have a total of{" "}
-                            {totalSet > 1
-                                ? totalSet + " sets"
-                                : totalSet + " set"}
-                            .
+        <RequireAuth>
+            <div className="w-5/6 lg:w-2/3 mt-8 mx-auto">
+                <div className="flex justify-between items-center">
+                    <p className="text-gray-600">
+                        {content && (
+                            <span>
+                                You have a total of{" "}
+                                {totalSet > 1
+                                    ? totalSet + " sets"
+                                    : totalSet + " set"}
+                                .
+                            </span>
+                        )}
+                    </p>
+                    <Link href="/create">
+                        <span className="flex justify-center items-center ml-4 px-4 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
+                            Create
+                            <PlusIcon />
                         </span>
-                    )}
-                </p>
-                <Link href="/create">
-                    <span className="flex justify-center items-center ml-4 px-4 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
-                        Create
-                        <PlusIcon />
-                    </span>
-                </Link>
+                    </Link>
+                </div>
+                {content ? content : <div className="loader">Loading...</div>}
             </div>
-            {content ? content : <div className="loader">Loading...</div>}
-        </div>
+        </RequireAuth>
     );
 };
 

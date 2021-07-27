@@ -1,8 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
-
+import RequireAuth from "../../modules/helpers/RequireAuth";
 import Profile from "../../components/Profile";
 import PlusIcon from "../../components/icons/PlusIcon";
 
@@ -22,8 +21,7 @@ const MONTH = [
 ];
 
 const ProfilePage = () => {
-    const router = useRouter();
-    const [session, loading] = useSession();
+    const [session] = useSession();
 
     const [joinedSince, setjoinedSince] = useState(null);
     const loadProfile = useCallback(async () => {
@@ -47,14 +45,8 @@ const ProfilePage = () => {
     }, [setjoinedSince]);
     useEffect(loadProfile, [loadProfile]);
 
-    // Authentication
-    if (loading) return null;
-    if (!loading && !session) {
-        router.replace("/login");
-    }
-
     return (
-        <>
+        <RequireAuth>
             {session ? (
                 <Profile username={session.user.name} />
             ) : (
@@ -129,7 +121,7 @@ const ProfilePage = () => {
                     <div className="loader">Loading...</div>
                 )}
             </div>
-        </>
+        </RequireAuth>
     );
 };
 
