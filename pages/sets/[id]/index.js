@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import RequireAuth from "../../../modules/helpers/RequireAuth";
+import RequireAuth from "../../../helpers/auth/RequireAuth";
 import useEventListener from "@use-it/event-listener";
-import LoadingSpinner from "../../../modules/ui/LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../../../components/ui/LoadingSpinner/LoadingSpinner";
 
 const SetPage = () => {
     const router = useRouter();

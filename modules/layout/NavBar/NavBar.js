@@ -2,12 +2,12 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/client";
 import NavLink from "./NavItem/NavLink";
 import NavButton from "./NavItem/NavButton";
-import ProfileIcon from "../../icons/ProfileIcon";
-import LogoutIcon from "../../icons/LogoutIcon";
-import HomeIcon from "../../icons/HomeIcon";
-import SetsIcon from "../../icons/SetsIcon";
-import SearchIcon from "../../icons/SearchIcon";
-import LoginIcon from "../../icons/LoginIcon";
+import ProfileIcon from "../../../icons/ProfileIcon";
+import LogoutIcon from "../../../icons/LogoutIcon";
+import HomeIcon from "../../../icons/HomeIcon";
+import SetsIcon from "../../../icons/SetsIcon";
+import SearchIcon from "../../../icons/SearchIcon";
+import LoginIcon from "../../../icons/LoginIcon";
 
 const NavBar = () => {
     const [authSession, authLoading] = useSession();

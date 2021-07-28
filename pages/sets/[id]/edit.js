@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import RequireAuth from "../../../modules/helpers/RequireAuth";
+import RequireAuth from "../../../helpers/auth/RequireAuth";
 import cuid from "cuid";
 import CardInputs from "../../../components/CardInputs/CardInputs";
-import LoadingSpinner from "../../../modules/ui/LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../../../components/ui/LoadingSpinner/LoadingSpinner";
 
 const EditSetPage = () => {
     const router = useRouter();

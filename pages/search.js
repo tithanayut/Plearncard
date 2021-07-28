@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
-import RequireAuth from "../modules/helpers/RequireAuth";
+import RequireAuth from "../helpers/auth/RequireAuth";
 import Sets from "../components/Sets/Sets";
-import LoadingSpinner from "../modules/ui/LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../components/ui/LoadingSpinner/LoadingSpinner";
 
 const SearchPage = () => {
     const [initialSets, setinitialSets] = useState(null);

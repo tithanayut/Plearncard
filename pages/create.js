@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/router";
-import RequireAuth from "../modules/helpers/RequireAuth";
-import LoadingSpinner from "../modules/ui/LoadingSpinner/LoadingSpinner";
+import RequireAuth from "../helpers/auth/RequireAuth";
+import LoadingSpinner from "../components/ui/LoadingSpinner/LoadingSpinner";
 
 const CreatePage = () => {
     const [message, setMessage] = useState(null);

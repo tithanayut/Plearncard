@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import RequireAuth from "../../modules/helpers/RequireAuth";
+import RequireAuth from "../../helpers/auth/RequireAuth";
 import Sets from "../../components/Sets/Sets";
-import LoadingSpinner from "../../modules/ui/LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
 import PlusIcon from "../../components/icons/PlusIcon";
 
 const CollectionPage = () => {

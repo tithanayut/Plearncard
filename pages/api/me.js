@@ -1,5 +1,5 @@
 import { MongoClient, ObjectId } from "mongodb";
-import extractAuthJWT from "../../utils/extractAuthJWT";
+import extractAuthJWT from "../../helpers/auth/extractAuthJWT";
 
 const uri = process.env.MONGODB_URI;
 

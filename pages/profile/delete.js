@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSession, signOut } from "next-auth/client";
-import RequireAuth from "../../modules/helpers/RequireAuth";
+import RequireAuth from "../../helpers/auth/RequireAuth";
 import Profile from "../../components/Profile";
 
 const ProfileDeletePage = () => {
