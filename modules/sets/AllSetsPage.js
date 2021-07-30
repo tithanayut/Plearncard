@@ -1,10 +1,10 @@
 import Link from "next/link";
 import useFetch from "../../helpers/fetch/useFetch";
 import RequireAuth from "../../helpers/auth/RequireAuth";
+import SetsGrid from "./SetsGrid/SetsGrid";
 import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
 import ErrorDialog from "../../components/ui/ErrorDialog/ErrorDialog";
 import PlusIcon from "../../icons/PlusIcon";
-import SetsGrid from "./SetsGrid/SetsGrid";
 
 const AllSetsPage = () => {
     const [data, error] = useFetch("/api/sets");
