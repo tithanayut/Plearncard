@@ -23,9 +23,13 @@ const SetSearchPage = () => {
 
     let searchResult;
     if (searchQuery) {
-        const matchedSets = data.filter((set) =>
-            set.name.match(new RegExp(searchQuery, "i"))
-        );
+        const matchedSets = data.filter((set) => {
+            try {
+                return set.name.match(new RegExp(searchQuery, "i"));
+            } catch {
+                return false;
+            }
+        });
 
         if (matchedSets.length === 0) {
             searchResult = (
