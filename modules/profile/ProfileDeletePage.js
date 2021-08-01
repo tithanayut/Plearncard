@@ -29,10 +29,10 @@ const ProfilePage = () => {
             method: "DELETE",
         });
         const resJson = await res.json();
-        setLoading(false);
 
         if (resJson.errors) {
             setError(resJson.errors.join(", "));
+            setLoading(false);
             return;
         }
 
