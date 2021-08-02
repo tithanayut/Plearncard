@@ -18,10 +18,8 @@ const IndexPage = () => {
                 <p className="text-xl font-bold">Are you ready?</p>
                 <Link href="/login">
                     <span className="flex justify-center items-center px-4 h-10 mt-4 font-bold bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
-                        <span className="mr-1">
-                            Get Started with Plearncard
-                        </span>
-                        <FlashIcon />
+                        Get Started with Plearncard
+                        <FlashIcon className="w-5 h-5 ml-1" />
                     </span>
                 </Link>
             </div>

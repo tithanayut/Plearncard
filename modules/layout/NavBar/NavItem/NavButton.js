@@ -2,9 +2,7 @@ const NavButton = (props) => {
     return (
         <li className="mx-2 cursor-pointer" onClick={props.action}>
             <p className="flex items-center">
-                <span className="mr-1">
-                    <props.icon />
-                </span>
+                <props.icon className="w-5 h-5 mr-1" />
                 <span className="hidden md:block">{props.text}</span>
             </p>
         </li>

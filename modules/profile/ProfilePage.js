@@ -38,14 +38,14 @@ const ProfilePage = () => {
                     <div className="flex mt-4 sm:mt-0">
                         <Link href="/sets">
                             <span className="flex justify-center items-center px-4 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
-                                <span className="mr-1">View My Sets</span>
-                                <SetsIcon />
+                                View My Sets
+                                <SetsIcon className="w-5 h-5 ml-1" />
                             </span>
                         </Link>
                         <Link href="/create">
                             <span className="flex justify-center items-center ml-2 px-4 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
                                 Create
-                                <PlusIcon />
+                                <PlusIcon className="w-5 h-5" />
                             </span>
                         </Link>
                     </div>
@@ -58,7 +58,7 @@ const ProfilePage = () => {
                         <li className="flex items-center my-1 text-red-600 cursor-pointer">
                             <Link href="/profile/delete">
                                 <span className="flex items-center">
-                                    <CrossIcon />
+                                    <CrossIcon className="w-5 h-5" />
                                     Delete account
                                 </span>
                             </Link>

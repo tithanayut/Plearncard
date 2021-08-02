@@ -50,7 +50,7 @@ const SetsIndexPage = () => {
                     <Link href="/create">
                         <span className="flex justify-center items-center px-4 h-10 mt-4 lg:mt-0 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
                             Create
-                            <PlusIcon />
+                            <PlusIcon className="w-5 h-5" />
                         </span>
                     </Link>
                 </div>

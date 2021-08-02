@@ -49,7 +49,7 @@ const ProfilePage = () => {
             <div className="w-5/6 lg:w-2/3 mt-8 mx-auto text-gray-600">
                 <div className="mt-4">
                     <h1 className="flex items-center text-2xl font-bold text-red-600">
-                        <CrossIcon />
+                        <CrossIcon className="w-6 h-6 mr-1" />
                         Delete Account
                     </h1>
                     <div className="text-gray-600 mt-4">
