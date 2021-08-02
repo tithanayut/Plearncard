@@ -5,7 +5,9 @@ import GridIcon from "../../../../icons/GridIcon";
 
 const SetsGridItem = (props) => {
     const createdAt = formatDateStrToUI(props.createdAt);
-    const isFavourite = props.isFavourite && <FavouriteSolidIcon />;
+    const isFavourite = props.isFavourite && (
+        <FavouriteSolidIcon className="w-6 h-6 text-yellow-500" />
+    );
     const totalCards =
         props.total > 1 ? `${props.total} cards` : `${props.total} card`;
 
@@ -21,9 +23,7 @@ const SetsGridItem = (props) => {
                 </div>
                 <div className="text-sm">
                     <p className="flex items-center">
-                        <span className="mr-1">
-                            <GridIcon />
-                        </span>
+                        <GridIcon className="w-4 h-4 mr-1" />
                         Created {createdAt}
                     </p>
                 </div>
