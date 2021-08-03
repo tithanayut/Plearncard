@@ -1,3 +1,3 @@
-import SetSearchPage from "../modules/sets/SetsSearchPage";
+import SearchSetsPage from "../modules/sets/SearchSetsPage";
 
-export default SetSearchPage;
+export default SearchSetsPage;

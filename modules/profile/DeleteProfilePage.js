@@ -6,7 +6,7 @@ import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
 import ErrorDialog from "../../components/ui/ErrorDialog/ErrorDialog";
 import CrossIcon from "../../icons/CrossIcon";
 
-const ProfilePage = () => {
+const DeleteProfilePage = () => {
     const [session] = useSession();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -108,4 +108,4 @@ const ProfilePage = () => {
     );
 };
 
-export default ProfilePage;
+export default DeleteProfilePage;

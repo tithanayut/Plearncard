@@ -4,7 +4,7 @@ import RequireAuth from "../../helpers/auth/RequireAuth";
 import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
 import ErrorDialog from "../../components/ui/ErrorDialog/ErrorDialog";
 
-const SetsCreatePage = () => {
+const CreateSetPage = () => {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -99,4 +99,4 @@ const SetsCreatePage = () => {
     );
 };
 
-export default SetsCreatePage;
+export default CreateSetPage;

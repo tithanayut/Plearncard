@@ -5,7 +5,7 @@ import SetsGrid from "./SetsGrid/SetsGrid";
 import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
 import ErrorDialog from "../../components/ui/ErrorDialog/ErrorDialog";
 
-const SetSearchPage = () => {
+const SearchSetsPage = () => {
     const [data, error] = useFetch("/api/sets");
     const [searchQuery, setSearchQuery] = useState(null);
 
@@ -81,4 +81,4 @@ const SetSearchPage = () => {
     );
 };
 
-export default SetSearchPage;
+export default SearchSetsPage;

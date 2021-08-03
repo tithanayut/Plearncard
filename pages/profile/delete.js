@@ -1,3 +1,3 @@
-import ProfileDeletePage from "../../modules/profile/ProfileDeletePage";
+import DeleteProfilePage from "../../modules/profile/DeleteProfilePage";
 
-export default ProfileDeletePage;
+export default DeleteProfilePage;

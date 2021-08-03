@@ -1,3 +1,3 @@
-import SetsCreatePage from "../modules/sets/SetsCreatePage";
+import CreateSetPage from "../modules/sets/CreateSetPage";
 
-export default SetsCreatePage;
+export default CreateSetPage;
