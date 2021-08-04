@@ -10,15 +10,15 @@ export default async (req, res) => {
     }
 
     const userId = token.sub;
-    const setId = req.query.id;
     const client = new MongoClient(uri);
-    if (req.method === "GET") {
-        if (!req.query.id) {
-            return res
-                .status(400)
-                .json({ errors: ["Request body not complete"] });
-        }
+    let setId;
+    try {
+        setId = ObjectId(req.query.id);
+    } catch {
+        return res.status(400).json({ errors: ["Invalid setId"] });
+    }
 
+    if (req.method === "GET") {
         let result;
         try {
             await client.connect();
@@ -26,7 +26,7 @@ export default async (req, res) => {
                 .db("plearncard")
                 .collection("cards")
                 .findOneAndUpdate(
-                    { userId, _id: ObjectId(setId) },
+                    { userId, _id: setId },
                     {
                         $set: {
                             lastViewedAt: new Date(),
@@ -48,7 +48,6 @@ export default async (req, res) => {
         return res.status(200).json(result.value);
     } else if (req.method === "PUT") {
         if (
-            !req.body.id ||
             !req.body.topic ||
             typeof req.body.total !== "number" ||
             typeof req.body.cards !== "object"
@@ -65,7 +64,7 @@ export default async (req, res) => {
                 .db("plearncard")
                 .collection("cards")
                 .findOneAndUpdate(
-                    { userId, _id: ObjectId(setId) },
+                    { userId, _id: setId },
                     {
                         $set: {
                             name: req.body.topic,
@@ -99,7 +98,7 @@ export default async (req, res) => {
                 .db("plearncard")
                 .collection("cards")
                 .findOneAndUpdate(
-                    { userId, _id: ObjectId(setId) },
+                    { userId, _id: setId },
                     {
                         $set: {
                             isFavourite: req.body.isFavourite,
@@ -117,18 +116,12 @@ export default async (req, res) => {
 
         return res.status(200).json(result.value);
     } else if (req.method === "DELETE") {
-        if (!req.query.id) {
-            return res
-                .status(400)
-                .json({ errors: ["Request body not complete"] });
-        }
-
         try {
             await client.connect();
             await client
                 .db("plearncard")
                 .collection("cards")
-                .deleteOne({ userId, _id: ObjectId(setId) });
+                .deleteOne({ userId, _id: setId });
         } catch {
             return res
                 .status(500)
