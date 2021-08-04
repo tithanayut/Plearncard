@@ -50,7 +50,7 @@ export default async (req, res) => {
         if (
             !req.body.topic ||
             typeof req.body.total !== "number" ||
-            typeof req.body.cards !== "object"
+            !Array.isArray(req.body.cards)
         ) {
             return res.status(400).json({
                 errors: ["Request body not complete or invalid data supplied"],
