@@ -1,25 +1,16 @@
 import { MongoClient } from "mongodb";
-import jwt from "next-auth/jwt";
+import extractAuthJWT from "../../../helpers/auth/extractAuthJWT";
 
 const uri = process.env.MONGODB_URI;
-const secret = process.env.SECRET;
 
 export default async (req, res) => {
-    // Authorization
-    let token;
-    try {
-        token = await jwt.getToken({ req, secret });
-    } catch {
-        return res
-            .status(400)
-            .json({ errors: ["Token verification failed", "Unauthorized"] });
-    }
+    const token = await extractAuthJWT(req);
     if (!token) {
         return res.status(401).json({ errors: ["Unauthorized"] });
     }
 
     const userId = token.sub;
-
+    const client = new MongoClient(uri);
     if (req.method === "GET") {
         let sort = {};
         let limit = 0;
@@ -35,7 +26,6 @@ export default async (req, res) => {
         }
 
         let result;
-        const client = new MongoClient(uri);
         try {
             await client.connect();
             result = await client
@@ -73,7 +63,6 @@ export default async (req, res) => {
         const description = req.body.description.trim() || "";
 
         let result;
-        const client = new MongoClient(uri);
         try {
             await client.connect();
             result = await client

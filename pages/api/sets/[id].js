@@ -1,26 +1,17 @@
 import { MongoClient, ObjectId } from "mongodb";
-import jwt from "next-auth/jwt";
+import extractAuthJWT from "../../../helpers/auth/extractAuthJWT";
 
 const uri = process.env.MONGODB_URI;
-const secret = process.env.SECRET;
 
 export default async (req, res) => {
-    // Authorization
-    let token;
-    try {
-        token = await jwt.getToken({ req, secret });
-    } catch {
-        return res
-            .status(400)
-            .json({ errors: ["Token verification failed", "Unauthorized"] });
-    }
+    const token = await extractAuthJWT(req);
     if (!token) {
         return res.status(401).json({ errors: ["Unauthorized"] });
     }
 
     const userId = token.sub;
     const setId = req.query.id;
-
+    const client = new MongoClient(uri);
     if (req.method === "GET") {
         if (!req.query.id) {
             return res
@@ -29,7 +20,6 @@ export default async (req, res) => {
         }
 
         let result;
-        const client = new MongoClient(uri);
         try {
             await client.connect();
             result = await client
@@ -69,7 +59,6 @@ export default async (req, res) => {
         }
 
         let result;
-        const client = new MongoClient(uri);
         try {
             await client.connect();
             result = await client
@@ -104,7 +93,6 @@ export default async (req, res) => {
         }
 
         let result;
-        const client = new MongoClient(uri);
         try {
             await client.connect();
             result = await client
@@ -135,7 +123,6 @@ export default async (req, res) => {
                 .json({ errors: ["Request body not complete"] });
         }
 
-        const client = new MongoClient(uri);
         try {
             await client.connect();
             await client
