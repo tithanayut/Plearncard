@@ -35,7 +35,7 @@ const LoginPage = () => {
                     onClick={signIn}
                 >
                     Proceed to Login
-                    <LoginIcon />
+                    <LoginIcon className="w-5 h-5 ml-1" />
                 </span>
             </div>
             <div className="flex justify-center text-center mt-8">
