@@ -17,7 +17,7 @@ const useFetch = (url) => {
             setResponse(resJson);
         };
         fetchData();
-    }, []);
+    }, [url]);
 
     return [data, error];
 };
