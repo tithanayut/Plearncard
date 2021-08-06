@@ -10,6 +10,9 @@ import BackIcon from "../../icons/BackIcon";
 import EditIcon from "../../icons/EditIcon";
 import FavouriteSolidIcon from "../../icons/FavouriteSolidIcon";
 import FavouriteOutlineIcon from "../../icons/FavouriteOutlineIcon";
+import NextWithBorderIcon from "../../icons/NextWithBorderIcon";
+import PreviousWithBorderIcon from "../../icons/PreviousWithBorderIcon";
+import FlipIcon from "../../icons/FlipIcon";
 
 const ViewSetPage = () => {
     const router = useRouter();
@@ -21,9 +24,9 @@ const ViewSetPage = () => {
     const [currentViewState, setCurrentViewState] = useState(false);
 
     const changeCurrentCardHandler = (action) => {
+        setCurrentViewState(false);
         if (action === "next") {
             setCurrentCardIndex((prevState) => {
-                setCurrentViewState(false);
                 if (prevState + 1 > data.cards.length - 1) {
                     return 0;
                 }
@@ -31,7 +34,6 @@ const ViewSetPage = () => {
             });
         } else if (action === "prev") {
             setCurrentCardIndex((prevState) => {
-                setCurrentViewState(false);
                 if (prevState - 1 < 0) {
                     return data.cards.length - 1;
                 }
@@ -54,20 +56,13 @@ const ViewSetPage = () => {
     // };
 
     useEventListener("keydown", ({ keyCode }) => {
-        // Left Arrow
+        // Left Arrow = 37, Right Arrow = 39, Spacebar = 32
         if (keyCode === 37) {
             changeCurrentCardHandler("prev");
-            return;
-        }
-        // Right Arrow
-        if (keyCode === 39) {
+        } else if (keyCode === 39) {
             changeCurrentCardHandler("next");
-            return;
-        }
-        // Spacebar
-        if (keyCode === 32) {
+        } else if (keyCode === 32) {
             flipCardHandler();
-            return;
         }
     });
 
@@ -86,7 +81,7 @@ const ViewSetPage = () => {
     let setView;
     if (data.cards.length > 0) {
         setView = (
-            <>
+            <div className="select-none">
                 <div className="mt-4 text-lg text-center text-gray-600 font-bold">
                     <p>
                         Card {currentCardIndex + 1} of {data.cards.length}
@@ -94,23 +89,12 @@ const ViewSetPage = () => {
                 </div>
                 <div className="flex justify-around items-center">
                     <div className="hidden md:flex justify-end w-1/4">
-                        <svg
+                        <PreviousWithBorderIcon
                             className="w-9 h-9 mr-4 cursor-pointer"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
                             onClick={() => {
                                 changeCurrentCardHandler("prev");
                             }}
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
-                            />
-                        </svg>
+                        />
                     </div>
                     <div
                         className="flex justify-center w-full lg:w-1/2 cursor-pointer"
@@ -133,23 +117,12 @@ const ViewSetPage = () => {
                         </div>
                     </div>
                     <div className="hidden md:flex justify-start w-1/4">
-                        <svg
+                        <NextWithBorderIcon
                             className="w-9 h-9 ml-4 cursor-pointer"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
                             onClick={() => {
                                 changeCurrentCardHandler("next");
                             }}
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
+                        />
                     </div>
                 </div>
                 <div className="flex justify-center items-center text-gray-600 mt-6 font-semibold">
@@ -159,40 +132,14 @@ const ViewSetPage = () => {
                             changeCurrentCardHandler("prev");
                         }}
                     >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
-                            />
-                        </svg>
+                        <PreviousWithBorderIcon className="w-6 h-6" />
                     </div>
                     <div
                         className="flex items-center cursor-pointer"
                         onClick={flipCardHandler}
                     >
                         Flip
-                        <svg
-                            className="w-5 h-5 ml-2"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                            />
-                        </svg>
+                        <FlipIcon className="w-5 h-5 ml-2" />
                     </div>
                     <div
                         className="flex md:hidden pl-10 cursor-pointer"
@@ -200,20 +147,7 @@ const ViewSetPage = () => {
                             changeCurrentCardHandler("next");
                         }}
                     >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
+                        <NextWithBorderIcon className="w-6 h-6" />
                     </div>
                 </div>
                 <div className="mt-8 text-center text-gray-600 select-text">
@@ -227,7 +161,7 @@ const ViewSetPage = () => {
                         </span>
                     </p>
                 </div>
-            </>
+            </div>
         );
     } else {
         setView = (
@@ -258,10 +192,8 @@ const ViewSetPage = () => {
                         </span>
                     </Link>
                 </div>
-            </div>
 
-            <div className="w-5/6 lg:w-2/3 mt-4 mx-auto select-none">
-                <div className="select-text">
+                <div className="mt-4 select-text">
                     <div className="flex items-center justify-between">
                         <p className="text-2xl mt-6 text-green-600 font-bold">
                             {data.name}
