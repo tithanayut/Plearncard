@@ -6,6 +6,10 @@ const useFetch = (url) => {
 
     useEffect(() => {
         const fetchData = async () => {
+            if (!url) {
+                return;
+            }
+
             const res = await fetch(url);
             const resJson = await res.json();
 
