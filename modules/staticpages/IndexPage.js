@@ -1,5 +1,6 @@
 import Link from "next/link";
 import FlashIcon from "../../icons/FlashIcon";
+import GitHubIcon from "../../icons/GitHubIcon";
 
 const IndexPage = () => {
     return (
@@ -22,6 +23,17 @@ const IndexPage = () => {
                         <FlashIcon className="w-5 h-5 ml-1" />
                     </span>
                 </Link>
+            </div>
+            <div className="mt-24">
+                <a
+                    className="flex justify-center items-center cursor-pointer"
+                    href="https://github.com/tithanayut/Plearncard"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    View this project on
+                    <GitHubIcon className="w-8 h-8 ml-2" />
+                </a>
             </div>
         </>
     );
