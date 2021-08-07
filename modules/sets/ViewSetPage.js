@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useEventListener from "@use-it/event-listener";
@@ -20,8 +20,16 @@ const ViewSetPage = () => {
     const apiUrl = setId ? `/api/sets/${setId}` : null;
 
     const [data, error] = useFetch(apiUrl);
+    const [isFavourite, setIsFavourite] = useState(false);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [currentViewState, setCurrentViewState] = useState(false);
+
+    // set isFavourite initial state
+    useEffect(() => {
+        if (data) {
+            setIsFavourite(data.isFavourite);
+        }
+    }, [data]);
 
     const changeCurrentCardHandler = (action) => {
         setCurrentViewState(false);
@@ -46,14 +54,18 @@ const ViewSetPage = () => {
         setCurrentViewState((prevState) => !prevState);
     };
 
-    // const setFavourite = async (isFavourite) => {
-    //     const res = await fetch(apiUrl, {
-    //         method: "PATCH",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify({ isFavourite }),
-    //     });
-    //     const resJson = await res.json();
-    // };
+    const toggleFavouriteHandler = async () => {
+        const res = await fetch(apiUrl, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ isFavourite: !isFavourite }),
+        });
+        const resJson = await res.json();
+
+        if (!resJson.errors) {
+            setIsFavourite(resJson.isFavourite);
+        }
+    };
 
     useEventListener("keydown", ({ keyCode }) => {
         // Left Arrow = 37, Right Arrow = 39, Spacebar = 32
@@ -198,12 +210,12 @@ const ViewSetPage = () => {
                         <p className="text-2xl mt-6 text-green-600 font-bold">
                             {data.name}
                         </p>
-                        {data.isFavourite ? (
+                        {isFavourite ? (
                             <p
                                 className="flex text-yellow-500 cursor-pointer"
-                                // onClick={() => {
-                                //     setFavourite(false);
-                                // }}
+                                onClick={() => {
+                                    toggleFavouriteHandler();
+                                }}
                             >
                                 <FavouriteSolidIcon className="w-6 h-6 mr-1" />
                                 <span>Favourite</span>
@@ -211,9 +223,9 @@ const ViewSetPage = () => {
                         ) : (
                             <p
                                 className="flex text-gray-500 cursor-pointer"
-                                // onClick={() => {
-                                //     setFavourite(true);
-                                // }}
+                                onClick={() => {
+                                    toggleFavouriteHandler();
+                                }}
                             >
                                 <FavouriteOutlineIcon className="w-6 h-6 mr-1" />
                                 <span>Not Favourite</span>
