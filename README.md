@@ -11,10 +11,6 @@ Plearncard was built by using [Next.js](https://nextjs.org/) and MongoDB. It is 
 
 Use it online through [Vercel-hosted instance](https://plearncard.vercel.app/) or consider deploy it on your own server with simple steps.
 
-## Installation
-
-TODO
-
 ## License
 
 MIT
