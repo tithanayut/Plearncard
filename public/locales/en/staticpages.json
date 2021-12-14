@@ -1,0 +1,14 @@
+{
+    "welcome_to_plearncard": "Welcome to Plearncard!",
+    "plearncard_desc": "Plearncard is a web application that helps you learn anything through flashcards.",
+    "are_you_ready": "Are you ready?",
+    "get_started": "Get Started with Plearncard",
+    "login_to_plearncard": "Login to Plearncard",
+    "view_on_github": "View this project on",
+    "hello": "Hello!",
+    "login_desc_1": "We use OAuth for authentication and authorization here.",
+    "login_desc_2": "Click on the button below to choose your favourite provider.",
+    "login_desc_3": "First time at Plearncard?",
+    "login_desc_4": "Just click login and select one of our login provider.",
+    "proceed_to_login": "Proceed to Login"
+}
