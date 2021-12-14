@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Provider } from "next-auth/client";
+import { appWithTranslation } from "next-i18next";
 import NextNProgress from "nextjs-progressbar";
 import NavBar from "../modules/layout/NavBar/NavBar";
 
@@ -23,4 +24,4 @@ function App({ Component, pageProps }) {
     );
 }
 
-export default App;
+export default appWithTranslation(App);

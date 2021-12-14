@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSession, signOut } from "next-auth/client";
 import RequireAuth from "../../helpers/auth/RequireAuth";
+import { useTranslation } from "next-i18next";
 import ProfileBanner from "./ProfileBanner/ProfileBanner";
 import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
 import ErrorDialog from "../../components/ui/ErrorDialog/ErrorDialog";
@@ -10,6 +11,8 @@ const DeleteProfilePage = () => {
     const [session] = useSession();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    const { t } = useTranslation(["profile", "common"]);
 
     if (loading) {
         return <LoadingSpinner />;
@@ -50,7 +53,7 @@ const DeleteProfilePage = () => {
                 <div className="mt-4">
                     <h1 className="flex items-center text-2xl font-bold text-red-600">
                         <CrossIcon className="w-6 h-6 mr-1" />
-                        Delete Account
+                        {t("delete_account")}
                     </h1>
                     <div className="text-gray-600 mt-4">
                         <p className="font-bold">

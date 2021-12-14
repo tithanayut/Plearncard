@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import RequireAuth from "../../../helpers/auth/RequireAuth";
 import cuid from "cuid";
@@ -260,3 +261,11 @@ const EditSetPage = () => {
 };
 
 export default EditSetPage;
+
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["common", "sets"])),
+        },
+    };
+}
