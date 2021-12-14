@@ -56,54 +56,26 @@ const DeleteProfilePage = () => {
                         {t("delete_account")}
                     </h1>
                     <div className="text-gray-600 mt-4">
-                        <p className="font-bold">
-                            You are about to delete your account at Plearncard.
-                        </p>
+                        <p className="font-bold">{t("delete_remark_1")}</p>
                         <p className="mt-1">
-                            By clicking{" "}
+                            {t("delete_remark_2") + " "}
                             <span className="text-red-600">
-                                &quot;Confirm delete my account&quot;
-                            </span>{" "}
-                            below, you acknowledge that the following actions
-                            will be processed.
+                                &quot;{t("confirm_delete_my_account")}&quot;
+                            </span>
+                            {" " + t("delete_remark_3")}
                         </p>
                         <ul className="list-disc list-inside mt-1">
-                            <li>
-                                All flashcards you created at Plearncard will be
-                                deleted from Plearncard server.
-                            </li>
-                            <li>
-                                Your user profile, including your name, email
-                                and image (if exists), will be deleted from
-                                Plearncard server.
-                            </li>
-                            <li>
-                                Your account information, including your User
-                                ID, OAuth profile, OAuth Access Token, and OAuth
-                                Refresh Token (if exists) will be deleted from
-                                Plearncard server. However, Plearncard will
-                                continue to be listed as an authorized app on
-                                your OAuth provider website. You can delete
-                                Plearncard from the list at your OAuth provider
-                                website if you would like.
-                            </li>
+                            <li>{t("delete_remark_4")}</li>
+                            <li>{t("delete_remark_5")}</li>
+                            <li>{t("delete_remark_6")}</li>
                         </ul>
-                        <p className="font-bold mt-2">
-                            Please note that this is a one-way operation. Once
-                            your data have been deleted, it <u>cannot</u> be
-                            recovered.
-                        </p>
-                        <p className="font-bold mt-2">
-                            If you confirm to delete your account, please click
-                            on the button below. You will be redirected to
-                            Plearncard front page after the account deletion has
-                            been completed.
-                        </p>
+                        <p className="font-bold mt-2">{t("delete_remark_7")}</p>
+                        <p className="font-bold mt-2">{t("delete_remark_8")}</p>
                     </div>
                 </div>
                 <div className="flex" onClick={deleteAccountHandler}>
                     <p className="flex justify-center items-center w-full md:w-auto px-8 h-10 mt-6 bg-red-200 text-red-600 font-bold rounded-lg cursor-pointer hover:bg-red-300 hover:shadow-sm">
-                        Confirm delete my account
+                        {t("confirm_delete_my_account")}
                     </p>
                 </div>
             </div>
