@@ -1,4 +1,9 @@
 {
+    "home": "Home",
+    "my_sets": "My Sets",
+    "search": "Search",
+    "login": "Login",
+    "logout": "Logout",
     "create": "Create",
     "view_my_sets": "View My Sets"
 }
