@@ -5,6 +5,7 @@ import NextNProgress from "nextjs-progressbar";
 import NavBar from "../modules/layout/NavBar/NavBar";
 
 import "../styles/globals.css";
+import "../styles/font.css";
 
 function App({ Component, pageProps }) {
     return (
