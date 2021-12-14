@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/client";
+import { useTranslation } from "next-i18next";
 import NavLink from "./NavItem/NavLink";
 import NavButton from "./NavItem/NavButton";
 import ProfileIcon from "../../../icons/ProfileIcon";
@@ -13,13 +14,15 @@ const NavBar = () => {
     const [authSession, authLoading] = useSession();
     const loggedIn = !authLoading && authSession;
 
+    const { t } = useTranslation("common");
+
     let leftNavItems, rightNavItems;
     if (loggedIn) {
         leftNavItems = (
             <>
-                <NavLink href="/home" text="Home" icon={HomeIcon} />
-                <NavLink href="/sets" text="My Sets" icon={SetsIcon} />
-                <NavLink href="/search" text="Search" icon={SearchIcon} />
+                <NavLink href="/home" text={t("home")} icon={HomeIcon} />
+                <NavLink href="/sets" text={t("my_sets")} icon={SetsIcon} />
+                <NavLink href="/search" text={t("search")} icon={SearchIcon} />
             </>
         );
 
@@ -37,13 +40,15 @@ const NavBar = () => {
                             callbackUrl: "/",
                         });
                     }}
-                    text="Logout"
+                    text={t("logout")}
                     icon={LogoutIcon}
                 />
             </>
         );
     } else {
-        rightNavItems = <NavLink href="/login" text="Login" icon={LoginIcon} />;
+        rightNavItems = (
+            <NavLink href="/login" text={t("login")} icon={LoginIcon} />
+        );
     }
 
     return (
