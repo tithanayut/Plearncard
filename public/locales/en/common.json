@@ -10,6 +10,8 @@
     "back": "Back",
     "delete": "Delete",
     "save": "Save",
+    "error": "Error",
+    "loading": "Loading",
     "view_my_sets": "View My Sets",
     "welcome_to_plearncard": "Welcome to Plearncard!"
 }
