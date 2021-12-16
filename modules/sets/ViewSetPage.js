@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import useEventListener from "@use-it/event-listener";
 import useFetch from "../../helpers/fetch/useFetch";
 import RequireAuth from "../../helpers/auth/RequireAuth";
+import { useTranslation } from "next-i18next";
 import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
 import ErrorDialog from "../../components/ui/ErrorDialog/ErrorDialog";
 import BackIcon from "../../icons/BackIcon";
@@ -23,6 +24,8 @@ const ViewSetPage = () => {
     const [isFavourite, setIsFavourite] = useState(false);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [currentViewState, setCurrentViewState] = useState(false);
+
+    const { t } = useTranslation(["sets", "common"]);
 
     // set isFavourite initial state
     useEffect(() => {
@@ -96,7 +99,9 @@ const ViewSetPage = () => {
             <div className="select-none">
                 <div className="mt-4 text-lg text-center text-gray-600 font-bold">
                     <p>
-                        Card {currentCardIndex + 1} of {data.cards.length}
+                        {`${t("card_of_1")} ${currentCardIndex + 1} ${t(
+                            "card_of_2"
+                        )} ${data.cards.length}`}
                     </p>
                 </div>
                 <div className="flex justify-around items-center">
@@ -150,7 +155,7 @@ const ViewSetPage = () => {
                         className="flex items-center cursor-pointer"
                         onClick={flipCardHandler}
                     >
-                        Flip
+                        {t("flip")}
                         <FlipIcon className="w-5 h-5 ml-2" />
                     </div>
                     <div
@@ -164,12 +169,10 @@ const ViewSetPage = () => {
                 </div>
                 <div className="mt-8 text-center text-gray-600 select-text">
                     <p>
-                        Use arrow buttons to switch cards. Click flip to flip
-                        between sides.
+                        {t("flip_desc_1")}
                         <br />
                         <span className="hidden xl:block">
-                            Alternatively, on a computer, use the left/right
-                            arrow key or spacebar.
+                            {t("flip_desc_2")}
                         </span>
                     </p>
                 </div>
@@ -180,7 +183,7 @@ const ViewSetPage = () => {
             <div className="flex justify-center mt-6 select-text">
                 <p className="flex justify-center items-center w-full lg:w-1/2 px-3 py-3 text-red-600 bg-gray-100 rounded-lg">
                     <span className="font-bold mr-2">
-                        There is no card in this set.
+                        {t("no_card_in_set")}
                     </span>
                 </p>
             </div>
@@ -194,12 +197,12 @@ const ViewSetPage = () => {
                     <Link href="/sets">
                         <span className="flex items-center text-gray-600 cursor-pointer">
                             <BackIcon className="w-4 h-4 mr-1" />
-                            Back to My Sets
+                            {t("back_to_my_sets")}
                         </span>
                     </Link>
                     <Link href={`/sets/${setId}/edit`}>
                         <span className="flex items-center text-green-600 cursor-pointer">
-                            Edit
+                            {t("common:edit")}
                             <EditIcon className="w-4 h-4 ml-2" />
                         </span>
                     </Link>
@@ -218,7 +221,7 @@ const ViewSetPage = () => {
                                 }}
                             >
                                 <FavouriteSolidIcon className="w-6 h-6 mr-1" />
-                                <span>Favourite</span>
+                                <span>{t("favourite")}</span>
                             </p>
                         ) : (
                             <p
@@ -228,7 +231,7 @@ const ViewSetPage = () => {
                                 }}
                             >
                                 <FavouriteOutlineIcon className="w-6 h-6 mr-1" />
-                                <span>Not Favourite</span>
+                                <span>{t("not_favourite")}</span>
                             </p>
                         )}
                     </div>
