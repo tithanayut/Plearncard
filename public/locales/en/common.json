@@ -7,6 +7,9 @@
     "logout": "Logout",
     "create": "Create",
     "edit": "Edit",
+    "back": "Back",
+    "delete": "Delete",
+    "save": "Save",
     "view_my_sets": "View My Sets",
     "welcome_to_plearncard": "Welcome to Plearncard!"
 }
