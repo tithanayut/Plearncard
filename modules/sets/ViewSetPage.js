@@ -215,7 +215,7 @@ const ViewSetPage = () => {
                         </p>
                         {isFavourite ? (
                             <p
-                                className="flex text-yellow-500 cursor-pointer"
+                                className="flex text-yellow-500 cursor-pointer select-none"
                                 onClick={() => {
                                     toggleFavouriteHandler();
                                 }}
@@ -225,7 +225,7 @@ const ViewSetPage = () => {
                             </p>
                         ) : (
                             <p
-                                className="flex text-gray-500 cursor-pointer"
+                                className="flex text-gray-500 cursor-pointer select-none"
                                 onClick={() => {
                                     toggleFavouriteHandler();
                                 }}
