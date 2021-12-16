@@ -14,5 +14,14 @@
     "index_page_desc": "Below is your recent sets. Or click create to build new one.",
     "search_not_found": "Not Found",
     "search_found_1": "Found",
-    "search_found_2": "match with your search"
+    "search_found_2": "match with your search",
+    "card_of_1": "Card",
+    "card_of_2": "of",
+    "flip": "Flip",
+    "flip_desc_1": "Use arrow buttons to switch cards. Click flip to flip between sides.",
+    "flip_desc_2": "Alternatively, on a computer, use the left/right arrow key or spacebar.",
+    "back_to_my_sets": "Back to My Sets",
+    "no_card_in_set": "There is no card in this set.",
+    "favourite": "Favourite",
+    "not_favourite": "Not Favourite"
 }
