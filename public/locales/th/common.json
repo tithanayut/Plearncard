@@ -10,6 +10,8 @@
     "back": "ย้อนกลับ",
     "delete": "ลบ",
     "save": "บันทึก",
+    "error": "ผิดพลาด",
+    "loading": "กำลังโหลด",
     "view_my_sets": "ดูเซททั้งหมด",
     "welcome_to_plearncard": "ยินดีต้อนรับสู่ Plearncard!"
 }
