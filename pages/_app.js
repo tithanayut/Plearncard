@@ -9,7 +9,12 @@ import "../styles/globals.css";
 function App({ Component, pageProps }) {
     return (
         <Provider session={pageProps.session}>
-            <NextNProgress color="#FFBF00" height={4} stopDelayMs={150} />
+            <NextNProgress
+                color="#FFBF00"
+                height={4}
+                stopDelayMs={150}
+                options={{ showSpinner: false }}
+            />
             <Head>
                 <title>Plearncard</title>
                 <link rel="icon" href="/favicon.svg" />
