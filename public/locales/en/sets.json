@@ -1,0 +1,18 @@
+{
+    "created": "Created",
+    "cards": "cards",
+    "card": "card",
+    "you_have_a_total_of": "You have a total of",
+    "no_set_yet": "You don't have any set yet. You may want to",
+    "create_one": "create one.",
+    "incomplete_topic_field": "Please complete topic field",
+    "create_new_set": "Create new set",
+    "topic": "Topic",
+    "description": "Description",
+    "no_recent_set": "You have no recent set yet.",
+    "recent": "Recent",
+    "index_page_desc": "Below is your recent sets. Or click create to build new one.",
+    "search_not_found": "Not Found",
+    "search_found_1": "Found",
+    "search_found_2": "match with your search"
+}
