@@ -6,5 +6,6 @@
     "login": "เข้าสู่ระบบ",
     "logout": "ออกจากระบบ",
     "create": "สร้าง",
-    "view_my_sets": "ดูเซททั้งหมด"
+    "view_my_sets": "ดูเซททั้งหมด",
+    "welcome_to_plearncard": "ยินดีต้อนรับสู่ Plearncard!"
 }

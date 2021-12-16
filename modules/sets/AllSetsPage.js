@@ -1,6 +1,7 @@
 import Link from "next/link";
 import useFetch from "../../helpers/fetch/useFetch";
 import RequireAuth from "../../helpers/auth/RequireAuth";
+import { useTranslation } from "next-i18next";
 import SetsGrid from "./SetsGrid/SetsGrid";
 import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
 import ErrorDialog from "../../components/ui/ErrorDialog/ErrorDialog";
@@ -8,6 +9,8 @@ import PlusIcon from "../../icons/PlusIcon";
 
 const AllSetsPage = () => {
     const [data, error] = useFetch("/api/sets");
+
+    const { t } = useTranslation(["sets", "common"]);
 
     if (!data) {
         return <LoadingSpinner />;
@@ -26,15 +29,16 @@ const AllSetsPage = () => {
         allSets = (
             <div className="flex justify-center mt-6">
                 <div className="flex flex-col justify-center items-center text-center w-full lg:w-1/2 p-3 text-gray-600 bg-green-100 rounded-lg">
-                    <p className="font-bold">Welcome to Plearncard!</p>
+                    <p className="font-bold">
+                        {t("common:welcome_to_plearncard")}
+                    </p>
                     <p>
-                        You don&apos;t have any set yet. You may want to
+                        {t("no_set_yet")}
                         <Link href="/create">
                             <span className="ml-1 text-green-600 font-bold cursor-pointer hover:text-green-500">
-                                create one
+                                {t("create_one")}
                             </span>
                         </Link>
-                        .
                     </p>
                 </div>
             </div>
@@ -43,8 +47,8 @@ const AllSetsPage = () => {
         allSets = <SetsGrid sets={data} />;
     }
 
-    const totalSets = `You have a total of ${data.length} ${
-        data.length > 1 ? "sets" : "set"
+    const totalSets = `${t("you_have_a_total_of")} ${data.length} ${
+        data.length > 1 ? t("sets") : t("set")
     }.`;
 
     return (
@@ -54,7 +58,7 @@ const AllSetsPage = () => {
                     <p className="text-gray-600">{totalSets}</p>
                     <Link href="/create">
                         <span className="flex justify-center items-center ml-4 px-4 h-10 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
-                            Create
+                            {t("common:create")}
                             <PlusIcon className="w-5 h-5" />
                         </span>
                     </Link>

@@ -6,5 +6,6 @@
     "login": "Login",
     "logout": "Logout",
     "create": "Create",
-    "view_my_sets": "View My Sets"
+    "view_my_sets": "View My Sets",
+    "welcome_to_plearncard": "Welcome to Plearncard!"
 }

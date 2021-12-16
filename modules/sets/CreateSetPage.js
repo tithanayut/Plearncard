@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import RequireAuth from "../../helpers/auth/RequireAuth";
+import { useTranslation } from "next-i18next";
 import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
 import ErrorDialog from "../../components/ui/ErrorDialog/ErrorDialog";
 
@@ -10,6 +11,8 @@ const CreateSetPage = () => {
     const [error, setError] = useState(null);
     const topicField = useRef();
     const descriptionField = useRef();
+
+    const { t } = useTranslation(["sets", "common"]);
 
     if (loading) {
         return <LoadingSpinner />;
@@ -23,7 +26,7 @@ const CreateSetPage = () => {
 
         setLoading(true);
         if (!topicField.current.value) {
-            setError("Please complete topic field");
+            setError(t("incomplete_topic_field"));
             setLoading(false);
             return;
         }
@@ -57,7 +60,7 @@ const CreateSetPage = () => {
         <RequireAuth>
             <div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
                 <p className="text-2xl text-green-600 font-bold">
-                    Create new set
+                    {t("create_new_set")}
                 </p>
                 {errorDialog}
                 <form
@@ -66,7 +69,7 @@ const CreateSetPage = () => {
                 >
                     <div className="my-2">
                         <label className="font-bold" htmlFor="topic">
-                            Topic
+                            {t("topic")}
                         </label>
                         <input
                             className="w-full lg:w-96 h-8 lg:mx-3 border-b-2 outline-none border-gray-400"
@@ -77,7 +80,7 @@ const CreateSetPage = () => {
                     </div>
                     <div className="my-2">
                         <label className="font-bold" htmlFor="description">
-                            Description
+                            {t("description")}
                         </label>
                         <input
                             className="w-full lg:w-2/3 h-8 lg:mx-3 border-b-2 outline-none border-gray-400"
@@ -90,7 +93,7 @@ const CreateSetPage = () => {
                         <input
                             className="w-full lg:w-auto px-4 h-10 font-bold text-gray-600 bg-green-200 rounded-md cursor-pointer hover:bg-green-300 hover:shadow-sm"
                             type="submit"
-                            value="Create!"
+                            value={t("common:create")}
                         />
                     </div>
                 </form>
