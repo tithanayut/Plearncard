@@ -7,6 +7,9 @@
     "logout": "ออกจากระบบ",
     "create": "สร้าง",
     "edit": "แก้ไข",
+    "back": "ย้อนกลับ",
+    "delete": "ลบ",
+    "save": "บันทึก",
     "view_my_sets": "ดูเซททั้งหมด",
     "welcome_to_plearncard": "ยินดีต้อนรับสู่ Plearncard!"
 }

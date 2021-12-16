@@ -23,5 +23,7 @@
     "back_to_my_sets": "Back to My Sets",
     "no_card_in_set": "There is no card in this set.",
     "favourite": "Favourite",
-    "not_favourite": "Not Favourite"
+    "not_favourite": "Not Favourite",
+    "cards_list": "Cards",
+    "add_card": "Add Card"
 }
