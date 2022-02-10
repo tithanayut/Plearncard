@@ -36,9 +36,9 @@ const SearchSetsPage = () => {
 
         if (matchedSets.length === 0) {
             searchResult = (
-                <div className="flex justify-center mt-6">
-                    <p className="flex justify-center items-center w-full lg:w-1/2 px-3 py-3 text-gray-600 bg-green-100 rounded-lg">
-                        <span className="font-bold mr-2">
+                <div className="mt-6 flex justify-center">
+                    <p className="flex w-full items-center justify-center rounded-lg bg-green-100 px-3 py-3 text-gray-600 lg:w-1/2">
+                        <span className="mr-2 font-bold">
                             {t("search_not_found")}
                         </span>
                     </p>
@@ -60,8 +60,8 @@ const SearchSetsPage = () => {
 
     return (
         <RequireAuth>
-            <div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
-                <p className="text-2xl text-green-600 font-bold">
+            <div className="mx-auto mt-8 w-5/6 lg:w-2/3 ">
+                <p className="text-2xl font-bold text-green-600">
                     {t("common:search")}
                 </p>
                 <form
@@ -75,7 +75,7 @@ const SearchSetsPage = () => {
                             {t("topic")}
                         </label>
                         <input
-                            className="w-full lg:w-96 h-8 lg:mx-3 border-b-2 outline-none border-gray-400"
+                            className="outline-none h-8 w-full border-b-2 border-gray-400 lg:mx-3 lg:w-96"
                             type="text"
                             id="topic"
                             onChange={(e) => {

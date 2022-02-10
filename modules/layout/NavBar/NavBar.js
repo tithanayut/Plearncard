@@ -76,9 +76,9 @@ const NavBar = () => {
     }
 
     return (
-        <nav className="flex justify-between items-center h-14 p-6 bg-green-500 text-white">
+        <nav className="flex h-14 items-center justify-between bg-green-500 p-6 text-white">
             <div className="flex items-center">
-                <h1 className="text-2xl font-bold mr-4 cursor-pointer">
+                <h1 className="mr-4 cursor-pointer text-2xl font-bold">
                     <Link href="/">Plearncard</Link>
                 </h1>
                 <ul className="flex">{leftNavItems}</ul>

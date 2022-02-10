@@ -1,9 +1,9 @@
 const CardInput = (props) => {
     return (
-        <div className="flex my-2">
+        <div className="my-2 flex">
             <input
                 type="text"
-                className="w-full lg:w-60 h-8 mx-1 lg:mx-3 border-b-2 outline-none border-gray-400"
+                className="outline-none mx-1 h-8 w-full border-b-2 border-gray-400 lg:mx-3 lg:w-60"
                 defaultValue={props.values.front}
                 onChange={(event) => {
                     props.change(props.id, { front: event.target.value });
@@ -11,20 +11,20 @@ const CardInput = (props) => {
             />
             <input
                 type="text"
-                className="w-full lg:w-60 h-8 mx-1 lg:mx-3 border-b-2 outline-none border-gray-400"
+                className="outline-none mx-1 h-8 w-full border-b-2 border-gray-400 lg:mx-3 lg:w-60"
                 defaultValue={props.values.back}
                 onChange={(event) => {
                     props.change(props.id, { back: event.target.value });
                 }}
             />
             <div
-                className="flex justify-center items-center ml-8 px-2 h-8 font-bold bg-red-200 text-gray-600 rounded-lg cursor-pointer hover:bg-red-300 hover:shadow-sm"
+                className="ml-8 flex h-8 cursor-pointer items-center justify-center rounded-lg bg-red-200 px-2 font-bold text-gray-600 hover:bg-red-300 hover:shadow-sm"
                 onClick={() => {
                     props.delete(props.id);
                 }}
             >
                 <svg
-                    className="w-5 h-5"
+                    className="h-5 w-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

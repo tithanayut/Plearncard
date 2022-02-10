@@ -27,8 +27,8 @@ const SetsIndexPage = () => {
     let recentSets;
     if (data.length === 0) {
         recentSets = (
-            <div className="flex justify-center mt-6">
-                <p className="flex justify-center items-center w-full lg:w-1/2 p-3 text-gray-600 font-bold bg-green-100 rounded-lg">
+            <div className="mt-6 flex justify-center">
+                <p className="flex w-full items-center justify-center rounded-lg bg-green-100 p-3 font-bold text-gray-600 lg:w-1/2">
                     {t("no_recent_set")}
                 </p>
             </div>
@@ -39,25 +39,25 @@ const SetsIndexPage = () => {
 
     return (
         <RequireAuth>
-            <div className="w-5/6 lg:w-2/3 mt-8 mx-auto">
-                <div className="block md:flex justify-between items-center">
+            <div className="mx-auto mt-8 w-5/6 lg:w-2/3">
+                <div className="block items-center justify-between md:flex">
                     <div>
-                        <h1 className="text-2xl text-green-600 font-bold">
+                        <h1 className="text-2xl font-bold text-green-600">
                             {t("common:welcome_to_plearncard")}
                         </h1>
-                        <p className="text-gray-600 mt-2">
+                        <p className="mt-2 text-gray-600">
                             {t("index_page_desc")}
                         </p>
                     </div>
                     <Link href="/create">
-                        <span className="flex justify-center items-center px-4 h-10 mt-4 lg:mt-0 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm">
+                        <span className="mt-4 flex h-10 cursor-pointer items-center justify-center rounded-lg bg-green-200 px-4 text-gray-600 hover:bg-green-300 hover:shadow-sm lg:mt-0">
                             {t("common:create")}
-                            <PlusIcon className="w-5 h-5" />
+                            <PlusIcon className="h-5 w-5" />
                         </span>
                     </Link>
                 </div>
                 <div className="mt-6">
-                    <p className="text-gray-600 font-bold">{t("recent")}</p>
+                    <p className="font-bold text-gray-600">{t("recent")}</p>
                     {recentSets}
                 </div>
             </div>
