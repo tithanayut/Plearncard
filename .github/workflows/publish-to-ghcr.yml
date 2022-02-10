@@ -1,15 +1,14 @@
 name: Publish container image
 
 on:
-  workflow_dispatch:
   push:
-    branches: [dev]
+    branches: [dev, prod]
 
 env:
   IMAGE_REPO: ghcr.io/tithanayut/plearncard
 
 jobs:
-  publish-container:
+  publish-to-ghcr:
     runs-on: ubuntu-latest
 
     steps:
