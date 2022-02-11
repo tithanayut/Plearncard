@@ -97,77 +97,77 @@ const ViewSetPage = () => {
     if (data.cards.length > 0) {
         setView = (
             <div className="select-none">
-                <div className="mt-4 text-lg text-center text-gray-600 font-bold">
+                <div className="mt-4 text-center text-lg font-bold text-gray-600">
                     <p>
                         {`${t("card_of_1")} ${currentCardIndex + 1} ${t(
                             "card_of_2"
                         )} ${data.cards.length}`}
                     </p>
                 </div>
-                <div className="flex justify-around items-center">
-                    <div className="hidden md:flex justify-end w-1/4">
+                <div className="flex items-center justify-around">
+                    <div className="hidden w-1/4 justify-end md:flex">
                         <PreviousWithBorderIcon
-                            className="w-9 h-9 mr-4 cursor-pointer"
+                            className="mr-4 h-9 w-9 cursor-pointer"
                             onClick={() => {
                                 changeCurrentCardHandler("prev");
                             }}
                         />
                     </div>
                     <div
-                        className="flex justify-center w-full lg:w-1/2 cursor-pointer"
+                        className="flex w-full cursor-pointer justify-center lg:w-1/2"
                         onClick={flipCardHandler}
                     >
                         <div
                             className={[
-                                "flex justify-center items-center w-96 mt-4 rounded-xl",
+                                "mt-4 flex w-96 items-center justify-center rounded-xl",
                                 !currentViewState
                                     ? "bg-green-100"
                                     : "bg-yellow-100",
                             ].join(" ")}
                             style={{ minHeight: "300px" }}
                         >
-                            <p className="text-xl text-center text-gray-600 font-semibold p-6">
+                            <p className="p-6 text-center text-xl font-semibold text-gray-600">
                                 {!currentViewState
                                     ? data.cards[currentCardIndex].front
                                     : data.cards[currentCardIndex].back}
                             </p>
                         </div>
                     </div>
-                    <div className="hidden md:flex justify-start w-1/4">
+                    <div className="hidden w-1/4 justify-start md:flex">
                         <NextWithBorderIcon
-                            className="w-9 h-9 ml-4 cursor-pointer"
+                            className="ml-4 h-9 w-9 cursor-pointer"
                             onClick={() => {
                                 changeCurrentCardHandler("next");
                             }}
                         />
                     </div>
                 </div>
-                <div className="flex justify-center items-center text-gray-600 mt-6 font-semibold">
+                <div className="mt-6 flex items-center justify-center font-semibold text-gray-600">
                     <div
-                        className="flex md:hidden pr-10 cursor-pointer"
+                        className="flex cursor-pointer pr-10 md:hidden"
                         onClick={() => {
                             changeCurrentCardHandler("prev");
                         }}
                     >
-                        <PreviousWithBorderIcon className="w-6 h-6" />
+                        <PreviousWithBorderIcon className="h-6 w-6" />
                     </div>
                     <div
-                        className="flex items-center cursor-pointer"
+                        className="flex cursor-pointer items-center"
                         onClick={flipCardHandler}
                     >
                         {t("flip")}
-                        <FlipIcon className="w-5 h-5 ml-2" />
+                        <FlipIcon className="ml-2 h-5 w-5" />
                     </div>
                     <div
-                        className="flex md:hidden pl-10 cursor-pointer"
+                        className="flex cursor-pointer pl-10 md:hidden"
                         onClick={() => {
                             changeCurrentCardHandler("next");
                         }}
                     >
-                        <NextWithBorderIcon className="w-6 h-6" />
+                        <NextWithBorderIcon className="h-6 w-6" />
                     </div>
                 </div>
-                <div className="mt-8 text-center text-gray-600 select-text">
+                <div className="mt-8 select-text text-center text-gray-600">
                     <p>
                         {t("flip_desc_1")}
                         <br />
@@ -180,9 +180,9 @@ const ViewSetPage = () => {
         );
     } else {
         setView = (
-            <div className="flex justify-center mt-6 select-text">
-                <p className="flex justify-center items-center w-full lg:w-1/2 px-3 py-3 text-red-600 bg-gray-100 rounded-lg">
-                    <span className="font-bold mr-2">
+            <div className="mt-6 flex select-text justify-center">
+                <p className="flex w-full items-center justify-center rounded-lg bg-gray-100 px-3 py-3 text-red-600 lg:w-1/2">
+                    <span className="mr-2 font-bold">
                         {t("no_card_in_set")}
                     </span>
                 </p>
@@ -192,50 +192,50 @@ const ViewSetPage = () => {
 
     return (
         <RequireAuth>
-            <div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
+            <div className="mx-auto mt-8 w-5/6 lg:w-2/3 ">
                 <div className="flex justify-between">
                     <Link href="/sets">
-                        <span className="flex items-center text-gray-600 cursor-pointer">
-                            <BackIcon className="w-4 h-4 mr-1" />
+                        <span className="flex cursor-pointer items-center text-gray-600">
+                            <BackIcon className="mr-1 h-4 w-4" />
                             {t("back_to_my_sets")}
                         </span>
                     </Link>
                     <Link href={`/sets/${setId}/edit`}>
-                        <span className="flex items-center text-green-600 cursor-pointer">
+                        <span className="flex cursor-pointer items-center text-green-600">
                             {t("common:edit")}
-                            <EditIcon className="w-4 h-4 ml-2" />
+                            <EditIcon className="ml-2 h-4 w-4" />
                         </span>
                     </Link>
                 </div>
 
                 <div className="mt-4 select-text">
                     <div className="flex items-center justify-between">
-                        <p className="text-2xl mt-6 text-green-600 font-bold">
+                        <p className="mt-6 text-2xl font-bold text-green-600">
                             {data.name}
                         </p>
                         {isFavourite ? (
                             <p
-                                className="flex text-yellow-500 cursor-pointer select-none"
+                                className="flex cursor-pointer select-none text-yellow-500"
                                 onClick={() => {
                                     toggleFavouriteHandler();
                                 }}
                             >
-                                <FavouriteSolidIcon className="w-6 h-6 mr-1" />
+                                <FavouriteSolidIcon className="mr-1 h-6 w-6" />
                                 <span>{t("favourite")}</span>
                             </p>
                         ) : (
                             <p
-                                className="flex text-gray-500 cursor-pointer select-none"
+                                className="flex cursor-pointer select-none text-gray-500"
                                 onClick={() => {
                                     toggleFavouriteHandler();
                                 }}
                             >
-                                <FavouriteOutlineIcon className="w-6 h-6 mr-1" />
+                                <FavouriteOutlineIcon className="mr-1 h-6 w-6" />
                                 <span>{t("not_favourite")}</span>
                             </p>
                         )}
                     </div>
-                    <p className="text-gray-600 font-semibold mt-2">
+                    <p className="mt-2 font-semibold text-gray-600">
                         {data.description}
                     </p>
                 </div>

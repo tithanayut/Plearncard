@@ -49,13 +49,13 @@ const DeleteProfilePage = () => {
         <RequireAuth>
             <ProfileBanner session={session} />
 
-            <div className="w-5/6 lg:w-2/3 mt-8 mx-auto text-gray-600">
+            <div className="mx-auto mt-8 w-5/6 text-gray-600 lg:w-2/3">
                 <div className="mt-4">
                     <h1 className="flex items-center text-2xl font-bold text-red-600">
-                        <CrossIcon className="w-6 h-6 mr-1" />
+                        <CrossIcon className="mr-1 h-6 w-6" />
                         {t("delete_account")}
                     </h1>
-                    <div className="text-gray-600 mt-4">
+                    <div className="mt-4 text-gray-600">
                         <p className="font-bold">{t("delete_remark_1")}</p>
                         <p className="mt-1">
                             {t("delete_remark_2") + " "}
@@ -64,17 +64,17 @@ const DeleteProfilePage = () => {
                             </span>
                             {" " + t("delete_remark_3")}
                         </p>
-                        <ul className="list-disc list-inside mt-1">
+                        <ul className="mt-1 list-inside list-disc">
                             <li>{t("delete_remark_4")}</li>
                             <li>{t("delete_remark_5")}</li>
                             <li>{t("delete_remark_6")}</li>
                         </ul>
-                        <p className="font-bold mt-2">{t("delete_remark_7")}</p>
-                        <p className="font-bold mt-2">{t("delete_remark_8")}</p>
+                        <p className="mt-2 font-bold">{t("delete_remark_7")}</p>
+                        <p className="mt-2 font-bold">{t("delete_remark_8")}</p>
                     </div>
                 </div>
                 <div className="flex" onClick={deleteAccountHandler}>
-                    <p className="flex justify-center items-center w-full md:w-auto px-8 h-10 mt-6 bg-red-200 text-red-600 font-bold rounded-lg cursor-pointer hover:bg-red-300 hover:shadow-sm">
+                    <p className="mt-6 flex h-10 w-full cursor-pointer items-center justify-center rounded-lg bg-red-200 px-8 font-bold text-red-600 hover:bg-red-300 hover:shadow-sm md:w-auto">
                         {t("confirm_delete_my_account")}
                     </p>
                 </div>

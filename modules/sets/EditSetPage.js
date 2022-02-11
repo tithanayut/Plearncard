@@ -131,31 +131,31 @@ const EditSetPage = () => {
 
     return (
         <RequireAuth>
-            <div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
+            <div className="mx-auto mt-8 w-5/6 lg:w-2/3 ">
                 <div className="flex justify-between">
                     <Link href={"/sets/" + setId}>
-                        <span className="flex items-center text-gray-600 cursor-pointer">
-                            <BackIcon className="w-4 h-4 mr-1" />
+                        <span className="flex cursor-pointer items-center text-gray-600">
+                            <BackIcon className="mr-1 h-4 w-4" />
                             {t("common:back")}
                         </span>
                     </Link>
                     <div
-                        className="flex items-center text-red-600 cursor-pointer"
+                        className="flex cursor-pointer items-center text-red-600"
                         onClick={deleteSetHandler}
                     >
                         {t("common:delete")}
-                        <TrashIcon className="w-4 h-4 ml-2" />
+                        <TrashIcon className="ml-2 h-4 w-4" />
                     </div>
                 </div>
             </div>
-            <div className="w-5/6 lg:w-2/3 mx-auto ">
+            <div className="mx-auto w-5/6 lg:w-2/3 ">
                 <form className="mt-6 text-gray-600">
                     <div className="my-2">
                         <label className="font-bold" htmlFor="topic">
                             {t("topic")}
                         </label>
                         <input
-                            className="w-full lg:w-96 h-8 lg:mx-3 border-b-2 outline-none border-gray-400"
+                            className="outline-none h-8 w-full border-b-2 border-gray-400 lg:mx-3 lg:w-96"
                             type="text"
                             id="topic"
                             defaultValue={initData.name}
@@ -167,7 +167,7 @@ const EditSetPage = () => {
                             {t("description")}
                         </label>
                         <input
-                            className="w-full lg:w-2/3 h-8 lg:mx-3 border-b-2 outline-none border-gray-400"
+                            className="outline-none h-8 w-full border-b-2 border-gray-400 lg:mx-3 lg:w-2/3"
                             type="text"
                             id="description"
                             defaultValue={initData.description}
@@ -175,32 +175,32 @@ const EditSetPage = () => {
                         ></input>
                     </div>
                 </form>
-                <div className="mt-8 text-lg text-center text-gray-600 font-bold">
+                <div className="mt-8 text-center text-lg font-bold text-gray-600">
                     <p>{t("cards_list")}</p>
                 </div>
-                <div className="flex justify-center mt-2">
+                <div className="mt-2 flex justify-center">
                     <span
-                        className="flex justify-center items-center px-4 h-9 bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm"
+                        className="flex h-9 cursor-pointer items-center justify-center rounded-lg bg-green-200 px-4 text-gray-600 hover:bg-green-300 hover:shadow-sm"
                         onClick={addCardHandler}
                     >
                         {t("add_card")}
-                        <PlusIcon class="w-6 h-6" />
+                        <PlusIcon class="h-6 w-6" />
                     </span>
                 </div>
-                <div className="flex justify-center mt-4">
+                <div className="mt-4 flex justify-center">
                     <CardInputs
                         cards={cards}
                         change={cardChangeHandler}
                         delete={deleteCardHandler}
                     />
                 </div>
-                <div className="flex justify-center mt-6">
+                <div className="mt-6 flex justify-center">
                     <div
-                        className="flex justify-center items-center px-4 h-10 font-bold bg-green-200 text-gray-600 rounded-lg cursor-pointer hover:bg-green-300 hover:shadow-sm"
+                        className="flex h-10 cursor-pointer items-center justify-center rounded-lg bg-green-200 px-4 font-bold text-gray-600 hover:bg-green-300 hover:shadow-sm"
                         onClick={saveToDBHandler}
                     >
                         {t("common:save")}
-                        <SaveIcon class="w-6 h-6 ml-2" />
+                        <SaveIcon class="ml-2 h-6 w-6" />
                     </div>
                 </div>
             </div>

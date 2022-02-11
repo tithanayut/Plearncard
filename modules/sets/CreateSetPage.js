@@ -58,8 +58,8 @@ const CreateSetPage = () => {
 
     return (
         <RequireAuth>
-            <div className="w-5/6 lg:w-2/3 mt-8 mx-auto ">
-                <p className="text-2xl text-green-600 font-bold">
+            <div className="mx-auto mt-8 w-5/6 lg:w-2/3 ">
+                <p className="text-2xl font-bold text-green-600">
                     {t("create_new_set")}
                 </p>
                 {errorDialog}
@@ -72,7 +72,7 @@ const CreateSetPage = () => {
                             {t("topic")}
                         </label>
                         <input
-                            className="w-full lg:w-96 h-8 lg:mx-3 border-b-2 outline-none border-gray-400"
+                            className="outline-none h-8 w-full border-b-2 border-gray-400 lg:mx-3 lg:w-96"
                             type="text"
                             id="topic"
                             ref={topicField}
@@ -83,7 +83,7 @@ const CreateSetPage = () => {
                             {t("description")}
                         </label>
                         <input
-                            className="w-full lg:w-2/3 h-8 lg:mx-3 border-b-2 outline-none border-gray-400"
+                            className="outline-none h-8 w-full border-b-2 border-gray-400 lg:mx-3 lg:w-2/3"
                             type="text"
                             id="description"
                             ref={descriptionField}
@@ -91,7 +91,7 @@ const CreateSetPage = () => {
                     </div>
                     <div className="mt-6">
                         <input
-                            className="w-full lg:w-auto px-4 h-10 font-bold text-gray-600 bg-green-200 rounded-md cursor-pointer hover:bg-green-300 hover:shadow-sm"
+                            className="h-10 w-full cursor-pointer rounded-md bg-green-200 px-4 font-bold text-gray-600 hover:bg-green-300 hover:shadow-sm lg:w-auto"
                             type="submit"
                             value={t("common:create")}
                         />
